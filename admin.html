@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - لوحة الإدارة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item active">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>المستخدمين</span>
+            </a>
+            <a href="investments-admin.html" class="nav-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="transactions-admin.html" class="nav-item">
+                <i class="fas fa-list-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="reports-admin.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="settings-admin.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                <span>إعدادات النظام</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">مدير النظام</span>
+                    <span class="user-role">مسؤول</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Admin Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>لوحة الإدارة</h1>
+                <p>نظرة عامة على النظام</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12,458</span>
+                        <span class="stat-label">إجمالي المستخدمين</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8.5%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$45.2M</span>
+                        <span class="stat-label">إجمالي الأصول</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+15.3%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">45,892</span>
+                        <span class="stat-label">المعاملات</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+18.5%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$3.8M</span>
+                        <span class="stat-label">الأرباح الشهرية</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+22%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-area"></i> نمو المستخدمين</h4>
+                    </div>
+                    <canvas id="usersChart"></canvas>
+                </div>
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-bar"></i> حجم المعاملات</h4>
+                    </div>
+                    <canvas id="transactionsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-bolt"></i> إجراءات سريعة</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                    <a href="users.html" class="btn btn-outline" style="justify-content: flex-start; padding: 20px;">
+                        <i class="fas fa-users" style="font-size: 24px; margin-left: 12px;"></i>
+                        <div style="text-align: right;">
+                            <span style="display: block; font-weight: 700;">المستخدمين</span>
+                            <span style="font-size: 13px; color: var(--text-muted);">إدارة الحسابات</span>
+                        </div>
+                    </a>
+                    <a href="investments-admin.html" class="btn btn-outline" style="justify-content: flex-start; padding: 20px;">
+                        <i class="fas fa-chart-pie" style="font-size: 24px; margin-left: 12px;"></i>
+                        <div style="text-align: right;">
+                            <span style="display: block; font-weight: 700;">الاستثمارات</span>
+                            <span style="font-size: 13px; color: var(--text-muted);">إدارة الفرص</span>
+                        </div>
+                    </a>
+                    <a href="transactions-admin.html" class="btn btn-outline" style="justify-content: flex-start; padding: 20px;">
+                        <i class="fas fa-list-alt" style="font-size: 24px; margin-left: 12px;"></i>
+                        <div style="text-align: right;">
+                            <span style="display: block; font-weight: 700;">المعاملات</span>
+                            <span style="font-size: 13px; color: var(--text-muted);">مراقبة العمليات</span>
+                        </div>
+                    </a>
+                    <a href="reports-admin.html" class="btn btn-outline" style="justify-content: flex-start; padding: 20px;">
+                        <i class="fas fa-chart-bar" style="font-size: 24px; margin-left: 12px;"></i>
+                        <div style="text-align: right;">
+                            <span style="display: block; font-weight: 700;">التقارير</span>
+                            <span style="font-size: 13px; color: var(--text-muted);">تحليلات النظام</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Users -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-user-plus"></i> آخر المستخدمين المسجلين</h3>
+                    <a href="users.html" class="btn btn-outline btn-sm">عرض الكل</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>المستخدم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>الدور</th>
+                                <th>الحالة</th>
+                                <th>تاريخ التسجيل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">أحمد محمد</span>
+                                            <span class="user-id">#USR-001</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ahmed.mohamed@email.com</td>
+                                <td><span class="badge badge-primary">مستثمر</span></td>
+                                <td><span class="status-badge active">نشط</span></td>
+                                <td>2024-06-27</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Al+Saud&background=10b981&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">سارة آل سعود</span>
+                                            <span class="user-id">#USR-002</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>sarah.alsaud@email.com</td>
+                                <td><span class="badge badge-success">مستخدم</span></td>
+                                <td><span class="status-badge active">نشط</span></td>
+                                <td>2024-06-26</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Khalid+Al+Rashid&background=f59e0b&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">خالد الراشد</span>
+                                            <span class="user-id">#USR-003</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>khalid.rashid@email.com</td>
+                                <td><span class="badge badge-primary">مستثمر</span></td>
+                                <td><span class="status-badge pending">في الانتظار</span></td>
+                                <td>2024-06-25</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+    <script>
+        // Users Chart
+        const usersCtx = document.getElementById('usersChart').getContext('2d');
+        new Chart(usersCtx, {
+            type: 'line',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                datasets: [{
+                    label: 'المستخدمين الجدد',
+                    data: [850, 920, 1100, 1050, 1200, 1234],
+                    borderColor: '#0ea5e9',
+                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+
+        // Transactions Chart
+        const transCtx = document.getElementById('transactionsChart').getContext('2d');
+        new Chart(transCtx, {
+            type: 'bar',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                datasets: [{
+                    label: 'الإيداعات',
+                    data: [2.1, 2.5, 3.2, 2.8, 3.5, 4.1],
+                    backgroundColor: '#10b981'
+                }, {
+                    label: 'السحوبات',
+                    data: [1.5, 1.8, 2.1, 1.9, 2.3, 2.7],
+                    backgroundColor: '#ef4444'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
