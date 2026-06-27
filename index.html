@@ -1,316 +1,1114 @@
-<!DOCTYPE html>
+
+html_code = '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROBANK - منصة الاستثمار الذكية</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- خط Cairo من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- ملف CSS الرئيسي - مسار نسبي صحيح لـ GitHub Pages -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- خلفية الجسيمات المتحركة -->
     <div class="particles-container" id="particles"></div>
 
-    <!-- Navigation -->
-    <nav class="top-bar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
-        <div class="logo">
-            <i class="fas fa-university"></i>
-            <span>PROBANK</span>
-        </div>
-        <div class="top-bar-actions">
-            <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
-            <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>استثمر بذكاء<br>مع <span style="color: var(--primary);">PROBANK</span></h1>
-            <p>منصة استثمارية متكاملة تتيح لك الوصول إلى أفضل الفرص الاستثمارية مع أمان كامل وشفافية تامة</p>
-            <div class="hero-buttons">
-                <a href="register.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 18px;">
-                    <i class="fas fa-rocket"></i> ابدأ الآن
-                </a>
-                <a href="#features" class="btn btn-outline" style="padding: 16px 40px; font-size: 18px;">
-                    <i class="fas fa-play-circle"></i> تعرف أكثر
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-value">$45M+</span>
-                    <span class="hero-stat-label">إجمالي الاستثمارات</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-value">12K+</span>
-                    <span class="hero-stat-label">مستثمر نشط</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-value">14.5%</span>
-                    <span class="hero-stat-label">متوسط العائد</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div style="text-align: center; margin-bottom: 64px;">
-            <h2 style="font-size: 40px; font-weight: 800; margin-bottom: 16px;">لماذا <span style="color: var(--primary);">PROBANK</span>؟</h2>
-            <p style="color: var(--text-secondary); font-size: 18px;">نقدم لك تجربة استثمارية فريدة مع مميزات متقدمة</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>أمان فائق</h3>
-                <p>حماية بنكية على أعلى مستوى مع تشفير كامل للبيانات ومصادقة ثنائية</p>
-            </div>
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+    <!-- ==================== الصفحة الرئيسية (Landing Page) ==================== -->
+    <div id="landing-page" class="page active">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="logo">
                     <i class="fas fa-chart-line"></i>
+                    <span>PROBANK</span>
                 </div>
-                <h3>عوائد مرتفعة</h3>
-                <p>فرص استثمارية مختارة بعناية توفر عوائد تصل إلى 20% سنوياً</p>
-            </div>
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
-                    <i class="fas fa-mobile-alt"></i>
+                <h1>منصة الاستثمار الذكية</h1>
+                <p>منصة استثمارية متكاملة تتيح لك الوصول إلى أفضل الفرص الاستثمارية مع أمان كامل وشفافية تامة</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('register-page')">
+                        <i class="fas fa-user-plus"></i>
+                        إنشاء حساب
+                    </button>
+                    <button class="btn btn-outline" onclick="showPage('login-page')">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
                 </div>
-                <h3>سهولة الوصول</h3>
-                <p>إدارة استثماراتك من أي مكان وفي أي وقت عبر جميع الأجهزة</p>
-            </div>
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                    <i class="fas fa-users"></i>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">$45M+</span>
+                        <span class="hero-stat-label">إجمالي الاستثمارات</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">12K+</span>
+                        <span class="hero-stat-label">مستثمر نشط</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">14.5%</span>
+                        <span class="hero-stat-label">متوسط العائد</span>
+                    </div>
                 </div>
-                <h3>دعم على مدار الساعة</h3>
-                <p>فريق دعم متخصص جاهز لمساعدتك في أي وقت تحتاجه</p>
             </div>
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+        </section>
+
+        <!-- لماذا PROBANK -->
+        <section class="features">
+            <h2 class="section-title">لماذا PROBANK؟</h2>
+            <p class="section-subtitle">نقدم لك تجربة استثمارية فريدة مع مميزات متقدمة</p>
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>أمان فائق</h3>
+                    <p>حماية بنكية على أعلى مستوى مع تشفير كامل للبيانات ومصادقة ثنائية</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>عوائد مرتفعة</h3>
+                    <p>فرص استثمارية مختارة بعناية توفر عوائد تصل إلى 20% سنوياً</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>سهولة الوصول</h3>
+                    <p>إدارة استثماراتك من أي مكان وفي أي وقت عبر جميع الأجهزة</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم على مدار الساعة</h3>
+                    <p>فريق دعم متخصص جاهز لمساعدتك في أي وقت تحتاجه</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>تقارير شفافة</h3>
+                    <p>تقارير مفصلة وتحديثات دورية عن أداء استثماراتك</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>أكاديمية الاستثمار</h3>
+                    <p>تعلم أساسيات الاستثمار واستراتيجيات بناء الثروة من الخبراء</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- فرص استثمارية -->
+        <section class="investments-section">
+            <h2 class="section-title">فرص استثمارية حصرية</h2>
+            <p class="section-subtitle">اختر من بين أفضل الفرص الاستثمارية المتاحة</p>
+            <div class="investments-grid">
+                <div class="investment-card glass">
+                    <div class="investment-header">
+                        <div class="investment-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <span class="investment-status active">نشط</span>
+                    </div>
+                    <h4>صندوق العقارات السكنية</h4>
+                    <p>استثمار في مشاريع عقارية سكنية مميزة في أفضل المواقع</p>
+                    <div class="investment-details">
+                        <div class="detail-item">
+                            <span class="detail-label">العائد السنوي</span>
+                            <span class="detail-value text-success">14.5%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">الحد الأدنى</span>
+                            <span class="detail-value">$5,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدة</span>
+                            <span class="detail-value">24 شهر</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المستثمرون</span>
+                            <span class="detail-value">234</span>
+                        </div>
+                    </div>
+                    <div class="investment-progress">
+                        <div class="progress-info">
+                            <span>تم جمع $2.3M من $5M</span>
+                            <span>46%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 46%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="showPage('login-page')">
+                        <i class="fas fa-arrow-left"></i>
+                        استثمر الآن
+                    </button>
+                </div>
+
+                <div class="investment-card glass">
+                    <div class="investment-header">
+                        <div class="investment-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <span class="investment-status active">نشط</span>
+                    </div>
+                    <h4>صندوق الطاقة المتجددة</h4>
+                    <p>استثمار في مشاريع الطاقة الشمسية وطاقة الرياح المستدامة</p>
+                    <div class="investment-details">
+                        <div class="detail-item">
+                            <span class="detail-label">العائد السنوي</span>
+                            <span class="detail-value text-success">16.2%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">الحد الأدنى</span>
+                            <span class="detail-value">$10,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدة</span>
+                            <span class="detail-value">36 شهر</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المستثمرون</span>
+                            <span class="detail-value">189</span>
+                        </div>
+                    </div>
+                    <div class="investment-progress">
+                        <div class="progress-info">
+                            <span>تم جمع $8.1M من $10M</span>
+                            <span>81%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 81%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="showPage('login-page')">
+                        <i class="fas fa-arrow-left"></i>
+                        استثمر الآن
+                    </button>
+                </div>
+
+                <div class="investment-card glass">
+                    <div class="investment-header">
+                        <div class="investment-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <span class="investment-status pending">قريباً</span>
+                    </div>
+                    <h4>صندوق التكنولوجيا الناشئة</h4>
+                    <p>استثمار في شركات التكنولوجيا الناشئة والذكاء الاصطناعي</p>
+                    <div class="investment-details">
+                        <div class="detail-item">
+                            <span class="detail-label">العائد المتوقع</span>
+                            <span class="detail-value text-primary">20%+</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">الحد الأدنى</span>
+                            <span class="detail-value">$15,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدة</span>
+                            <span class="detail-value">48 شهر</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">الهدف</span>
+                            <span class="detail-value">$20M</span>
+                        </div>
+                    </div>
+                    <div class="investment-progress">
+                        <div class="progress-info">
+                            <span>يبدأ بعد 15 يوم</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-block" disabled>
+                        <i class="fas fa-clock"></i>
+                        قريباً
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- بطاقة استثمارية -->
+        <section class="card-section">
+            <h2 class="section-title">بطاقتك الاستثمارية</h2>
+            <p class="section-subtitle">بطاقة افتراضية متكاملة لإدارة استثماراتك</p>
+            <div class="credit-card-3d">
+                <div class="credit-card-inner">
+                    <div class="credit-card-front">
+                        <div class="card-top">
+                            <span class="card-logo">PROBANK</span>
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="card-chip">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="card-number">**** **** **** 4582</div>
+                        <div class="card-bottom">
+                            <div>
+                                <span class="card-label">CARD HOLDER</span>
+                                <span class="card-holder">AHMED MOHAMED</span>
+                            </div>
+                            <div>
+                                <span class="card-label">EXPIRES</span>
+                                <span class="card-expiry">12/26</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="credit-card-back">
+                        <div class="card-stripe"></div>
+                        <div class="card-cvv">
+                            <span class="card-label">CVV</span>
+                            <span>123</span>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secured by PROBANK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content glass">
+                <h2>ابدأ رحلتك الاستثمارية اليوم</h2>
+                <p>انضم إلى آلاف المستثمرين الذين يثقون بـ PROBANK لبناء مستقبلهم المالي</p>
+                <button class="btn btn-primary btn-lg" onclick="showPage('register-page')">
+                    <i class="fas fa-user-plus"></i>
+                    إنشاء حساب مجاني
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <span>PROBANK</span>
+                    </div>
+                    <p>منصة الاستثمار الذكية لبناء مستقبلك المالي</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>روابط سريعة</h4>
+                        <a href="#" onclick="showPage('login-page')">تسجيل الدخول</a>
+                        <a href="#" onclick="showPage('register-page')">إنشاء حساب</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>الدعم</h4>
+                        <a href="#">مركز المساعدة</a>
+                        <a href="#">الأسئلة الشائعة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 PROBANK. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ==================== صفحة تسجيل الدخول ==================== -->
+    <div id="login-page" class="page auth-page">
+        <div class="auth-container">
+            <div class="auth-card glass">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <span>PROBANK</span>
+                    </div>
+                    <h2>تسجيل الدخول</h2>
+                    <p>أهلاً بك مجدداً في منصة الاستثمار الذكية</p>
+                </div>
+                <form class="auth-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <div class="input-wrapper password-input">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" class="form-input" placeholder="أدخل كلمة المرور" required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox">
+                            <span>تذكرني</span>
+                        </label>
+                        <a href="#" class="forgot-link">نسيت كلمة المرور؟</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>ليس لديك حساب؟ <a href="#" onclick="showPage('register-page')">إنشاء حساب</a></p>
+                    <button class="btn btn-text" onclick="showPage('landing-page')">
+                        <i class="fas fa-arrow-right"></i>
+                        العودة للرئيسية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== صفحة إنشاء حساب ==================== -->
+    <div id="register-page" class="page auth-page">
+        <div class="auth-container">
+            <div class="auth-card glass">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <span>PROBANK</span>
+                    </div>
+                    <h2>إنشاء حساب جديد</h2>
+                    <p>انضم إلى منصة الاستثمار الذكية</p>
+                </div>
+                
+                <!-- مؤشر الخطوات -->
+                <div class="steps-indicator">
+                    <div class="step active" data-step="1">1</div>
+                    <div class="step-line"></div>
+                    <div class="step" data-step="2">2</div>
+                    <div class="step-line"></div>
+                    <div class="step" data-step="3">3</div>
+                </div>
+                
+                <form class="auth-form" onsubmit="handleRegister(event)">
+                    <!-- الخطوة 1: المعلومات الشخصية -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الاسم الأول</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-input" placeholder="الاسم الأول" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>الاسم الأخير</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-input" placeholder="الاسم الأخير" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" class="form-input" placeholder="+966 50 000 0000" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- الخطوة 2: كلمة المرور -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-group">
+                            <label>كلمة المرور</label>
+                            <div class="input-wrapper password-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-input" placeholder="أدخل كلمة المرور" required oninput="checkPasswordStrength(this.value)">
+                                <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strength-fill"></div>
+                                </div>
+                                <span class="strength-text" id="strength-text">أدخل كلمة مرور قوية</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>تأكيد كلمة المرور</label>
+                            <div class="input-wrapper password-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-input" placeholder="أعد إدخال كلمة المرور" required>
+                                <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- الخطوة 3: التأكيد -->
+                    <div class="form-step" data-step="3">
+                        <div class="form-group">
+                            <label class="checkbox-wrapper terms">
+                                <input type="checkbox" required>
+                                <span>أوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox">
+                                <span>أرغب في تلقي التحديثات والعروض الخاصة</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="prev-btn" onclick="prevStep()" style="display:none">
+                            <i class="fas fa-arrow-right"></i>
+                            السابق
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-btn" onclick="nextStep()">
+                            التالي
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn" style="display:none">
+                            <i class="fas fa-user-plus"></i>
+                            إنشاء الحساب
+                        </button>
+                    </div>
+                </form>
+                <div class="auth-footer">
+                    <p>لديك حساب بالفعل؟ <a href="#" onclick="showPage('login-page')">تسجيل الدخول</a></p>
+                    <button class="btn btn-text" onclick="showPage('landing-page')">
+                        <i class="fas fa-arrow-right"></i>
+                        العودة للرئيسية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== لوحة التحكم (Dashboard) ==================== -->
+    <div id="dashboard-page" class="page">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="logo-text">PROBANK</span>
+                </div>
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showDashboardTab('overview')">
+                    <i class="fas fa-home"></i>
+                    <span>نظرة عامة</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showDashboardTab('investments')">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>استثماراتي</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showDashboardTab('transactions')">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>المعاملات</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showDashboardTab('reports')">
                     <i class="fas fa-file-alt"></i>
-                </div>
-                <h3>تقارير شفافة</h3>
-                <p>تقارير مفصلة وتحديثات دورية عن أداء استثماراتك</p>
-            </div>
-            <div class="feature-card glass">
-                <div class="feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                    <span>التقارير</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showDashboardTab('academy')">
                     <i class="fas fa-graduation-cap"></i>
+                    <span>الأكاديمية</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#" class="nav-item" onclick="showDashboardTab('settings')">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showDashboardTab('support')">
+                    <i class="fas fa-headset"></i>
+                    <span>الدعم</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Ahmed Mohamed</span>
+                        <span class="user-role">مستثمر مميز</span>
+                    </div>
                 </div>
-                <h3>أكاديمية الاستثمار</h3>
-                <p>تعلم أساسيات الاستثمار واستراتيجيات بناء الثروة من الخبراء</p>
             </div>
-        </div>
-    </section>
+        </aside>
 
-    <!-- Investment Opportunities -->
-    <section style="padding: 100px 20px;">
-        <div style="text-align: center; margin-bottom: 64px;">
-            <h2 style="font-size: 40px; font-weight: 800; margin-bottom: 16px;">فرص <span style="color: var(--primary);">استثمارية</span> حصرية</h2>
-            <p style="color: var(--text-secondary); font-size: 18px;">اختر من بين أفضل الفرص الاستثمارية المتاحة</p>
-        </div>
-        <div class="investments-grid" style="max-width: 1200px; margin: 0 auto;">
-            <div class="investment-card glass">
-                <div class="investment-header">
-                    <div class="investment-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="investment-status active">نشط</div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="بحث...">
                 </div>
-                <h4>صندوق العقارات السكنية</h4>
-                <p>استثمار في مشاريع عقارية سكنية مميزة في أفضل المواقع</p>
-                <div class="investment-details">
-                    <div class="detail-item">
-                        <span class="detail-label">العائد السنوي</span>
-                        <span class="detail-value">14.5%</span>
+                <div class="top-bar-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="btn-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <button class="btn-icon" onclick="toggleTheme()">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <div class="user-dropdown" onclick="toggleUserMenu()">
+                        <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
                     </div>
-                    <div class="detail-item">
-                        <span class="detail-label">الحد الأدنى</span>
-                        <span class="detail-value">$5,000</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">المدة</span>
-                        <span class="detail-value">24 شهر</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">المستثمرون</span>
-                        <span class="detail-value">234</span>
-                    </div>
-                </div>
-                <div class="investment-progress">
-                    <div class="progress-info">
-                        <span>تم جمع $2.3M من $5M</span>
-                        <span>46%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 46%"></div>
-                    </div>
-                </div>
-                <div class="investment-actions">
-                    <a href="register.html" class="btn btn-primary btn-sm">استثمر الآن</a>
-                    <button class="btn btn-outline btn-sm">التفاصيل</button>
                 </div>
             </div>
 
-            <div class="investment-card glass">
-                <div class="investment-header">
-                    <div class="investment-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
-                        <i class="fas fa-leaf"></i>
+            <!-- Content Wrapper -->
+            <div class="content-wrapper">
+                
+                <!-- نظرة عامة -->
+                <div id="tab-overview" class="dashboard-tab active">
+                    <div class="page-header">
+                        <h1>نظرة عامة</h1>
+                        <p>مرحباً Ahmed، إليك ملخص استثماراتك</p>
                     </div>
-                    <div class="investment-status active">نشط</div>
-                </div>
-                <h4>صندوق الطاقة المتجددة</h4>
-                <p>استثمار في مشاريع الطاقة الشمسية وطاقة الرياح المستدامة</p>
-                <div class="investment-details">
-                    <div class="detail-item">
-                        <span class="detail-label">العائد السنوي</span>
-                        <span class="detail-value">16.2%</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">الحد الأدنى</span>
-                        <span class="detail-value">$10,000</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">المدة</span>
-                        <span class="detail-value">36 شهر</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">المستثمرون</span>
-                        <span class="detail-value">189</span>
-                    </div>
-                </div>
-                <div class="investment-progress">
-                    <div class="progress-info">
-                        <span>تم جمع $8.1M من $10M</span>
-                        <span>81%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 81%"></div>
-                    </div>
-                </div>
-                <div class="investment-actions">
-                    <a href="register.html" class="btn btn-primary btn-sm">استثمر الآن</a>
-                    <button class="btn btn-outline btn-sm">التفاصيل</button>
-                </div>
-            </div>
-
-            <div class="investment-card glass">
-                <div class="investment-header">
-                    <div class="investment-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <div class="investment-status pending">قريباً</div>
-                </div>
-                <h4>صندوق التكنولوجيا الناشئة</h4>
-                <p>استثمار في شركات التكنولوجيا الناشئة والذكاء الاصطناعي</p>
-                <div class="investment-details">
-                    <div class="detail-item">
-                        <span class="detail-label">العائد المتوقع</span>
-                        <span class="detail-value">20%+</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">الحد الأدنى</span>
-                        <span class="detail-value">$15,000</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">المدة</span>
-                        <span class="detail-value">48 شهر</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">الهدف</span>
-                        <span class="detail-value">$20M</span>
-                    </div>
-                </div>
-                <div class="investment-progress">
-                    <div class="progress-info">
-                        <span>يبدأ بعد 15 يوم</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                <div class="investment-actions">
-                    <button class="btn btn-outline btn-sm">سجل اهتمامك</button>
-                    <button class="btn btn-outline btn-sm">التفاصيل</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3D Credit Card Demo -->
-    <section style="padding: 100px 20px; text-align: center;">
-        <h2 style="font-size: 40px; font-weight: 800; margin-bottom: 16px;">بطاقتك <span style="color: var(--primary);">الاستثمارية</span></h2>
-        <p style="color: var(--text-secondary); font-size: 18px; margin-bottom: 40px;">بطاقة افتراضية متكاملة لإدارة استثماراتك</p>
-
-        <div class="credit-card-3d">
-            <div class="credit-card-inner">
-                <div class="credit-card-front">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <i class="fas fa-university" style="font-size: 32px; color: white;"></i>
-                        <span style="font-size: 14px; font-weight: 600;">PROBANK</span>
-                    </div>
-                    <div style="font-size: 24px; letter-spacing: 4px; font-family: monospace;">
-                        **** **** **** 4582
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-size: 10px; opacity: 0.7;">CARD HOLDER</span>
-                            <span style="display: block; font-size: 14px; font-weight: 600;">AHMED MOHAMED</span>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">$24,500</span>
+                                <span class="stat-label">إجمالي المحفظة</span>
+                            </div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
+                            </div>
                         </div>
-                        <div>
-                            <span style="font-size: 10px; opacity: 0.7;">EXPIRES</span>
-                            <span style="display: block; font-size: 14px; font-weight: 600;">12/26</span>
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">$3,420</span>
+                                <span class="stat-label">العائد الشهري</span>
+                            </div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+8.2%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">$1,250</span>
+                                <span class="stat-label">الأرباح المعلقة</span>
+                            </div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5.1%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">استثمارات نشطة</span>
+                            </div>
+                            <div class="stat-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-row">
+                        <div class="chart-card glass">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-chart-area"></i> أداء المحفظة</h4>
+                            </div>
+                            <div class="chart-placeholder">
+                                <canvas id="portfolioChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card glass">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-chart-pie"></i> توزيع الاستثمارات</h4>
+                            </div>
+                            <div class="chart-placeholder">
+                                <canvas id="distributionChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="credit-card-back">
-                    <div style="height: 40px; background: rgba(0,0,0,0.3); margin: 20px -24px;"></div>
-                    <div style="padding: 0 20px;">
-                        <div style="background: white; color: #333; padding: 10px; text-align: left; font-family: monospace;">
-                            <span style="float: right;">CVV</span>
-                            123
+
+                <!-- استثماراتي -->
+                <div id="tab-investments" class="dashboard-tab">
+                    <div class="page-header">
+                        <h1>استثماراتي</h1>
+                        <p>إدارة ومتابعة استثماراتك</p>
+                    </div>
+                    <div class="investments-list">
+                        <!-- سيتم ملؤها ديناميكياً -->
+                    </div>
+                </div>
+
+                <!-- المعاملات -->
+                <div id="tab-transactions" class="dashboard-tab">
+                    <div class="page-header">
+                        <h1>المعاملات</h1>
+                        <p>سجل جميع معاملاتك المالية</p>
+                    </div>
+                    <div class="content-card glass">
+                        <div class="table-filters">
+                            <div class="filter-group">
+                                <select class="form-input">
+                                    <option>جميع الأنواع</option>
+                                    <option>إيداع</option>
+                                    <option>سحب</option>
+                                    <option>استثمار</option>
+                                    <option>عائد</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <select class="form-input">
+                                    <option>جميع الحالات</option>
+                                    <option>مكتمل</option>
+                                    <option>قيد المعالجة</option>
+                                    <option>فاشل</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <input type="date" class="form-input">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>المعرف</th>
+                                        <th>النوع</th>
+                                        <th>المبلغ</th>
+                                        <th>التاريخ</th>
+                                        <th>الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="tx-id">#TX-2026-001</td>
+                                        <td><span class="badge badge-primary"><i class="fas fa-arrow-down"></i> إيداع</span></td>
+                                        <td class="amount positive">+$5,000</td>
+                                        <td>2026-06-25</td>
+                                        <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tx-id">#TX-2026-002</td>
+                                        <td><span class="badge badge-success"><i class="fas fa-chart-line"></i> استثمار</span></td>
+                                        <td class="amount negative">-$3,000</td>
+                                        <td>2026-06-24</td>
+                                        <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tx-id">#TX-2026-003</td>
+                                        <td><span class="badge badge-info"><i class="fas fa-coins"></i> عائد</span></td>
+                                        <td class="amount positive">+$420</td>
+                                        <td>2026-06-20</td>
+                                        <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div style="text-align: center; font-size: 12px; opacity: 0.7;">
-                        <i class="fas fa-shield-alt"></i> Secured by PROBANK
+                </div>
+
+                <!-- التقارير -->
+                <div id="tab-reports" class="dashboard-tab">
+                    <div class="page-header">
+                        <h1>التقارير</h1>
+                        <p>تقارير مفصلة عن أداء استثماراتك</p>
+                    </div>
+                    <div class="content-card glass">
+                        <div class="report-filters">
+                            <div class="filter-group">
+                                <label>من تاريخ</label>
+                                <input type="date" class="form-input" value="2026-01-01">
+                            </div>
+                            <div class="filter-group">
+                                <label>إلى تاريخ</label>
+                                <input type="date" class="form-input" value="2026-06-27">
+                            </div>
+                            <div class="filter-group">
+                                <label>نوع التقرير</label>
+                                <select class="form-input">
+                                    <option>تقرير شامل</option>
+                                    <option>تقرير العائدات</option>
+                                    <option>تقرير الاستثمارات</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-file-export"></i>
+                                تصدير PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأكاديمية -->
+                <div id="tab-academy" class="dashboard-tab">
+                    <div class="page-header">
+                        <h1>أكاديمية الاستثمار</h1>
+                        <p>تعلم أساسيات الاستثمار واستراتيجيات بناء الثروة</p>
+                    </div>
+                    <div class="courses-grid">
+                        <div class="course-card glass">
+                            <div class="course-image">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h4>أساسيات الاستثمار</h4>
+                            <p>تعلم المفاهيم الأساسية للاستثمار الناجح</p>
+                            <div class="course-progress">
+                                <div class="course-progress-bar">
+                                    <div class="course-progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span>75% مكتمل</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">متابعة</button>
+                        </div>
+                        <div class="course-card glass">
+                            <div class="course-image" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h4>تحليل السوق</h4>
+                            <p>كيفية قراءة وتحليل اتجاهات السوق</p>
+                            <div class="course-progress">
+                                <div class="course-progress-bar">
+                                    <div class="course-progress-fill" style="width: 30%"></div>
+                                </div>
+                                <span>30% مكتمل</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">متابعة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الإعدادات -->
+                <div id="tab-settings" class="dashboard-tab">
+                    <div class="page-header">
+                        <h1>الإعدادات</h1>
+                        <p>إدارة إعدادات حسابك</p>
+                    </div>
+                    <div class="settings-nav">
+                        <button class="settings-nav-item active" onclick="showSettingsTab('profile')">
+                            <i class="fas fa-user"></i>
+                            الملف الشخصي
+                        </button>
+                        <button class="settings-nav-item" onclick="showSettingsTab('security')">
+                            <i class="fas fa-shield-alt"></i>
+                            الأمان
+                        </button>
+                        <button class="settings-nav-item" onclick="showSettingsTab('notifications')">
+                            <i class="fas fa-bell"></i>
+                            الإشعارات
+                        </button>
+                        <button class="settings-nav-item" onclick="showSettingsTab('payment')">
+                            <i class="fas fa-credit-card"></i>
+                            الدفع
+                        </button>
+                    </div>
+                    
+                    <div id="settings-profile" class="settings-tab active">
+                        <div class="settings-card glass">
+                            <div class="settings-card-header">
+                                <h3><i class="fas fa-user-circle"></i> الملف الشخصي</h3>
+                            </div>
+                            <div class="profile-photo-section">
+                                <div class="profile-photo-wrapper">
+                                    <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff&size=120" alt="Profile" class="profile-photo">
+                                    <button class="change-photo-btn">
+                                        <i class="fas fa-camera"></i>
+                                    </button>
+                                </div>
+                                <div class="profile-photo-actions">
+                                    <button class="btn btn-primary btn-sm">تغيير الصورة</button>
+                                    <button class="btn btn-outline btn-sm">حذف</button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>الاسم الأول</label>
+                                    <input type="text" class="form-input" value="Ahmed">
+                                </div>
+                                <div class="form-group">
+                                    <label>الاسم الأخير</label>
+                                    <input type="text" class="form-input" value="Mohamed">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>البريد الإلكتروني</label>
+                                <input type="email" class="form-input" value="ahmed@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>رقم الهاتف</label>
+                                <input type="tel" class="form-input" value="+966 50 000 0000">
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary">حفظ التغييرات</button>
+                                <button class="btn btn-outline">إلغاء</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
+    </div>
 
-    <!-- CTA Section -->
-    <section style="padding: 100px 20px; text-align: center;">
-        <div class="glass" style="max-width: 800px; margin: 0 auto; padding: 64px;">
-            <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 16px;">ابدأ رحلتك الاستثمارية اليوم</h2>
-            <p style="color: var(--text-secondary); font-size: 18px; margin-bottom: 32px;">
-                انضم إلى آلاف المستثمرين الذين يثقون بـ PROBANK لبناء مستقبلهم المالي
-            </p>
-            <a href="register.html" class="btn btn-primary" style="padding: 16px 48px; font-size: 18px;">
-                <i class="fas fa-user-plus"></i> إنشاء حساب مجاني
-            </a>
-        </div>
-    </section>
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
 
-    <!-- Footer -->
-    <footer style="padding: 48px 20px; border-top: 1px solid var(--border-color); text-align: center;">
-        <div class="logo" style="justify-content: center; margin-bottom: 24px;">
-            <i class="fas fa-university"></i>
-            <span>PROBANK</span>
-        </div>
-        <p style="color: var(--text-muted); margin-bottom: 24px;">منصة الاستثمار الذكية - بناء مستقبلك المالي يبدأ هنا</p>
-        <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 24px;">
-            <a href="#" style="color: var(--text-secondary); font-size: 20px;"><i class="fab fa-twitter"></i></a>
-            <a href="#" style="color: var(--text-secondary); font-size: 20px;"><i class="fab fa-linkedin"></i></a>
-            <a href="#" style="color: var(--text-secondary); font-size: 20px;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color: var(--text-secondary); font-size: 20px;"><i class="fab fa-telegram"></i></a>
-        </div>
-        <p style="color: var(--text-muted); font-size: 14px;">© 2024 PROBANK. جميع الحقوق محفوظة.</p>
-    </footer>
+    <!-- JavaScript -->
+    <script>
+        // ==================== إدارة الصفحات ====================
+        function showPage(pageId) {
+            // إخفاء جميع الصفحات
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            // إظهار الصفحة المطلوبة
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            // تمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
 
-    <script src="script.js"></script>
+        // ==================== إدارة خطوات التسجيل ====================
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function updateSteps() {
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+            
+            document.querySelectorAll('.step-line').forEach((line, index) => {
+                line.classList.remove('completed');
+                if (index + 1 < currentStep) {
+                    line.classList.add('completed');
+                }
+            });
+
+            document.querySelectorAll('.form-step').forEach((step, index) => {
+                step.classList.remove('active');
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            document.getElementById('prev-btn').style.display = currentStep === 1 ? 'none' : 'inline-flex';
+            document.getElementById('next-btn').style.display = currentStep === totalSteps ? 'none' : 'inline-flex';
+            document.getElementById('submit-btn').style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateSteps();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateSteps();
+            }
+        }
+
+        // ==================== إدارة لوحة التحكم ====================
+        function showDashboardTab(tabId) {
+            document.querySelectorAll('.dashboard-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            event.target.closest('.nav-item').classList.add('active');
+        }
+
+        function showSettingsTab(tabId) {
+            document.querySelectorAll('.settings-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.settings-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const targetTab = document.getElementById('settings-' + tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            event.target.closest('.settings-nav-item').classList.add('active');
+        }
+
+        // ==================== Sidebar ====================
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+
+        // ==================== Theme Toggle ====================
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const icon = document.getElementById('theme-icon');
+            if (document.body.classList.contains('light-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // ==================== Password Toggle ====================
+        function togglePassword(icon) {
+            const input = icon.previousElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // ==================== Password Strength ====================
+        function checkPasswordStrength(password) {
+            const fill = document.getElementById('strength-fill');
+            const text = document.getElementById('strength-text');
+            let strength = 0;
+            
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+            if (password.match(/\d/)) strength++;
+            if (password.match(/[^a-zA-Z\d]/)) strength++;
+            
+            const width = (strength / 4) * 100;
+            fill.style.width = width + '%';
+            
+            const colors = ['#ef4444', '#f59e0b', '#0ea5e9', '#10b981'];
+            fill.style.background = colors[strength - 1] || '#ef4444';
+            
+            const texts = ['ضعيف جداً', 'ضعيف', 'متوسط', 'قوي', 'قوي جداً'];
+            text.textContent = texts[strength] || 'أدخل كلمة مرور';
+            text.style.color = colors[strength - 1] || '#64748b';
+        }
+
+        // ==================== Form Handlers ====================
+        function handleLogin(e) {
+            e.preventDefault();
+            showToast('success', 'تم تسجيل الدخول بنجاح!');
+            setTimeout(() => {
+                showPage('dashboard-page');
+            }, 1000);
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            showToast('success', 'تم إنشاء الحساب بنجاح!');
+            setTimeout(() => {
+                showPage('login-page');
+            }, 1500);
+        }
+
+        // ==================== Toast Notifications ====================
+        function showToast(type, message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle'
+            };
+            
+            toast.innerHTML = `
+                <i class="fas ${icons[type] || icons.success}"></i>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // ==================== Particles Background ====================
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // ==================== Initialization ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // إظهار الصفحة الرئيسية افتراضياً
+            showPage('landing-page');
+        });
+    </script>
 </body>
-</html>
+</html>'''
+
+# Save the file
+with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print("File saved successfully!")
+print(f"File size: {len(html_code)} characters")
