@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - إدارة المستخدمين</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+            <a href="users.html" class="nav-item active">
+                <i class="fas fa-users"></i>
+                <span>المستخدمين</span>
+            </a>
+            <a href="investments-admin.html" class="nav-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="transactions-admin.html" class="nav-item">
+                <i class="fas fa-list-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="reports-admin.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="settings-admin.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                <span>إعدادات النظام</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">مدير النظام</span>
+                    <span class="user-role">مسؤول</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في المستخدمين...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Users Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>إدارة المستخدمين</h1>
+                <p>إدارة حسابات المستخدمين والصلاحيات</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12,458</span>
+                        <span class="stat-label">إجمالي المستخدمين</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8.5%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">11,234</span>
+                        <span class="stat-label">مستخدمين نشطين</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+12%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">892</span>
+                        <span class="stat-label">في انتظار التحقق</span>
+                    </div>
+                    <div class="stat-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-3%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">332</span>
+                        <span class="stat-label">محظورين</span>
+                    </div>
+                    <div class="stat-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-1.2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> قائمة المستخدمين</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="showAddUserModal()">
+                            <i class="fas fa-plus"></i> إضافة مستخدم
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-download"></i> تصدير
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="table-filters">
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">جميع الحالات</option>
+                            <option value="active">نشط</option>
+                            <option value="pending">في الانتظار</option>
+                            <option value="suspended">موقوف</option>
+                            <option value="banned">محظور</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">جميع الأدوار</option>
+                            <option value="user">مستخدم</option>
+                            <option value="investor">مستثمر</option>
+                            <option value="admin">مسؤول</option>
+                            <option value="superadmin">مدير عام</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <input type="date" class="form-input" placeholder="من تاريخ">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="select-all"></th>
+                                <th>المستخدم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>الدور</th>
+                                <th>الحالة</th>
+                                <th>تاريخ التسجيل</th>
+                                <th>آخر نشاط</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">أحمد محمد</span>
+                                            <span class="user-id">#USR-001</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ahmed.mohamed@email.com</td>
+                                <td><span class="badge badge-primary">مستثمر</span></td>
+                                <td><span class="status-badge active"><i class="fas fa-circle"></i> نشط</span></td>
+                                <td>2024-01-15</td>
+                                <td>منذ 5 دقائق</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="حظر"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Al+Saud&background=10b981&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">سارة آل سعود</span>
+                                            <span class="user-id">#USR-002</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>sarah.alsaud@email.com</td>
+                                <td><span class="badge badge-success">مستخدم</span></td>
+                                <td><span class="status-badge active"><i class="fas fa-circle"></i> نشط</span></td>
+                                <td>2024-02-20</td>
+                                <td>منذ ساعة</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="حظر"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Khalid+Al+Rashid&background=f59e0b&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">خالد الراشد</span>
+                                            <span class="user-id">#USR-003</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>khalid.rashid@email.com</td>
+                                <td><span class="badge badge-primary">مستثمر</span></td>
+                                <td><span class="status-badge pending"><i class="fas fa-clock"></i> في الانتظار</span></td>
+                                <td>2024-03-10</td>
+                                <td>منذ يومين</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="حظر"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Fatima+Al+Otaibi&background=8b5cf6&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">فاطمة العتيبي</span>
+                                            <span class="user-id">#USR-004</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>fatima.otaibi@email.com</td>
+                                <td><span class="badge badge-warning">مسؤول</span></td>
+                                <td><span class="status-badge active"><i class="fas fa-circle"></i> نشط</span></td>
+                                <td>2024-01-05</td>
+                                <td>منذ 30 دقيقة</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="حظر"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Omar+Al+Harbi&background=ef4444&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">عمر الحربي</span>
+                                            <span class="user-id">#USR-005</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>omar.harbi@email.com</td>
+                                <td><span class="badge badge-success">مستخدم</span></td>
+                                <td><span class="status-badge suspended"><i class="fas fa-pause-circle"></i> موقوف</span></td>
+                                <td>2024-02-01</td>
+                                <td>منذ أسبوع</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="حظر"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Nora+Al+Ghamdi&background=ec4899&color=fff" alt="User">
+                                        <div>
+                                            <span class="user-name">نورة الغامدي</span>
+                                            <span class="user-id">#USR-006</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>nora.ghamdi@email.com</td>
+                                <td><span class="badge badge-primary">مستثمر</span></td>
+                                <td><span class="status-badge banned"><i class="fas fa-ban"></i> محظور</span></td>
+                                <td>2024-01-20</td>
+                                <td>منذ شهر</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm" title="عرض"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm" title="تعديل"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon-sm" title="فك الحظر"><i class="fas fa-unlock"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn btn-sm btn-outline" disabled><i class="fas fa-chevron-right"></i></button>
+                    <button class="btn btn-sm btn-primary">1</button>
+                    <button class="btn btn-sm btn-outline">2</button>
+                    <button class="btn btn-sm btn-outline">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="btn btn-sm btn-outline">124</button>
+                    <button class="btn btn-sm btn-outline"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add User Modal -->
+    <div class="modal" id="addUserModal">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> إضافة مستخدم جديد</h3>
+                <button class="modal-close" onclick="closeAddUserModal()">&times;</button>
+            </div>
+            <form class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>الاسم الأول</label>
+                        <input type="text" class="form-input" placeholder="أدخل الاسم الأول">
+                    </div>
+                    <div class="form-group">
+                        <label>الاسم الأخير</label>
+                        <input type="text" class="form-input" placeholder="أدخل الاسم الأخير">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" class="form-input" placeholder="أدخل البريد الإلكتروني">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" class="form-input" placeholder="+966 50 000 0000">
+                    </div>
+                    <div class="form-group">
+                        <label>الدور</label>
+                        <select class="form-input">
+                            <option value="user">مستخدم</option>
+                            <option value="investor">مستثمر</option>
+                            <option value="admin">مسؤول</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" class="form-input" placeholder="أدخل كلمة المرور">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">إضافة مستخدم</button>
+                    <button type="button" class="btn btn-outline" onclick="closeAddUserModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+</body>
+</html>
