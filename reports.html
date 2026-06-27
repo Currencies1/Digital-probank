@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - التقارير</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item active">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">أحمد محمد</span>
+                    <span class="user-role">مستثمر</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في التقارير...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Reports Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>التقارير والتحليلات</h1>
+                <p>تحليل أداء استثماراتك</p>
+            </div>
+
+            <!-- Report Filters -->
+            <div class="content-card glass">
+                <div class="report-filters">
+                    <div class="filter-group">
+                        <label>الفترة</label>
+                        <select class="form-input">
+                            <option>آخر 7 أيام</option>
+                            <option>آخر 30 يوم</option>
+                            <option selected>آخر 3 أشهر</option>
+                            <option>آخر 6 أشهر</option>
+                            <option>هذا العام</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>من تاريخ</label>
+                        <input type="date" class="form-input" value="2024-04-01">
+                    </div>
+                    <div class="filter-group">
+                        <label>إلى تاريخ</label>
+                        <input type="date" class="form-input" value="2024-06-27">
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-sync"></i> تحديث
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> تصدير PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="charts-row">
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-line"></i> أداء المحفظة</h4>
+                    </div>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-bar"></i> الإيرادات الشهرية</h4>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="charts-row">
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-pie"></i> توزيع الاستثمارات</h4>
+                    </div>
+                    <canvas id="distributionChart"></canvas>
+                </div>
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h4><i class="fas fa-chart-area"></i> مقارنة العوائد</h4>
+                    </div>
+                    <canvas id="returnsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$45,250</span>
+                        <span class="stat-label">القيمة الحالية</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$5,250</span>
+                        <span class="stat-label">إجمالي الأرباح</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">13.1%</span>
+                        <span class="stat-label">العائد الكلي</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">أشهر من الاستثمار</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+    <script>
+        // Performance Chart
+        const perfCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(perfCtx, {
+            type: 'line',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                datasets: [{
+                    label: 'قيمة المحفظة',
+                    data: [40000, 41000, 42500, 43000, 44500, 45250],
+                    borderColor: '#0ea5e9',
+                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'إجمالي الاستثمار',
+                    data: [40000, 40000, 40000, 40000, 40000, 40000],
+                    borderColor: '#64748b',
+                    borderDash: [5, 5],
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+
+        // Revenue Chart
+        const revCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revCtx, {
+            type: 'bar',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                datasets: [{
+                    label: 'الأرباح',
+                    data: [450, 520, 580, 610, 720, 850],
+                    backgroundColor: '#10b981'
+                }, {
+                    label: 'الرسوم',
+                    data: [50, 50, 50, 50, 50, 50],
+                    backgroundColor: '#ef4444'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+
+        // Distribution Chart
+        const distCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['عقارات', 'طاقة', 'تكنولوجيا', 'نقد'],
+                datasets: [{
+                    data: [42.8, 28.6, 28.6, 0],
+                    backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b', '#64748b']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#fff' }
+                    }
+                }
+            }
+        });
+
+        // Returns Chart
+        const retCtx = document.getElementById('returnsChart').getContext('2d');
+        new Chart(retCtx, {
+            type: 'line',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+                datasets: [{
+                    label: 'العقارات',
+                    data: [14.5, 14.5, 14.5, 14.5, 14.5, 14.5],
+                    borderColor: '#0ea5e9',
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: 'الطاقة',
+                    data: [16.2, 16.2, 16.2, 16.2, 16.2, 16.2],
+                    borderColor: '#10b981',
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: 'التكنولوجيا',
+                    data: [0, 0, 0, 0, 0, 20],
+                    borderColor: '#f59e0b',
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
