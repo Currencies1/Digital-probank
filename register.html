@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - إنشاء حساب</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card glass">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-university"></i>
+                        <span>PROBANK</span>
+                    </div>
+                    <h2>إنشاء حساب جديد</h2>
+                    <p>انضم إلى مجتمع المستثمرين في PROBANK</p>
+                </div>
+
+                <!-- Steps Indicator -->
+                <div class="steps-indicator">
+                    <div class="step active" id="step-indicator-1">1</div>
+                    <div class="step-line" id="line-1"></div>
+                    <div class="step" id="step-indicator-2">2</div>
+                    <div class="step-line" id="line-2"></div>
+                    <div class="step" id="step-indicator-3">3</div>
+                </div>
+
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <!-- Step 1: Personal Info -->
+                    <div id="step-1">
+                        <h3 style="margin-bottom: 24px; font-size: 18px;"><i class="fas fa-user" style="color: var(--primary);"></i> المعلومات الشخصية</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الاسم الأول *</label>
+                                <input type="text" id="regFirstName" class="form-input" placeholder="أحمد" required>
+                            </div>
+                            <div class="form-group">
+                                <label>الاسم الأخير *</label>
+                                <input type="text" id="regLastName" class="form-input" placeholder="محمد" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني *</label>
+                            <input type="email" id="regEmail" class="form-input" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف *</label>
+                            <input type="tel" id="regPhone" class="form-input" placeholder="+966 50 000 0000" required>
+                        </div>
+                        <div class="form-actions" style="justify-content: flex-end;">
+                            <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                التالي <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Security -->
+                    <div id="step-2" style="display: none;">
+                        <h3 style="margin-bottom: 24px; font-size: 18px;"><i class="fas fa-lock" style="color: var(--primary);"></i> إعدادات الأمان</h3>
+                        <div class="form-group">
+                            <label>كلمة المرور *</label>
+                            <div class="password-input">
+                                <input type="password" id="regPassword" class="form-input" placeholder="أدخل كلمة مرور قوية" required oninput="checkPasswordStrength(this.value)">
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill" style="width: 0%"></div>
+                                </div>
+                                <span class="strength-text" id="strengthText">أدخل كلمة مرور</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>تأكيد كلمة المرور *</label>
+                            <div class="password-input">
+                                <input type="password" id="regConfirmPassword" class="form-input" placeholder="أعد إدخال كلمة المرور" required>
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>تاريخ الميلاد</label>
+                            <input type="date" id="regBirthDate" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>الجنسية</label>
+                            <select id="regNationality" class="form-input">
+                                <option value="">اختر الجنسية</option>
+                                <option>السعودية</option>
+                                <option>الإمارات</option>
+                                <option>الكويت</option>
+                                <option>قطر</option>
+                                <option>البحرين</option>
+                                <option>عمان</option>
+                                <option>مصر</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="prevStep()">
+                                <i class="fas fa-arrow-right"></i> السابق
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                التالي <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Confirmation -->
+                    <div id="step-3" style="display: none;">
+                        <h3 style="margin-bottom: 24px; font-size: 18px;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> تأكيد الحساب</h3>
+
+                        <!-- Email Verification Simulation -->
+                        <div id="verifySection">
+                            <div style="text-align: center; padding: 32px; background: var(--bg-glass); border-radius: var(--radius); margin-bottom: 24px;">
+                                <i class="fas fa-envelope-open-text" style="font-size: 64px; color: var(--primary); margin-bottom: 16px;"></i>
+                                <h4 style="margin-bottom: 8px;">تأكيد البريد الإلكتروني</h4>
+                                <p style="color: var(--text-secondary);">سنرسل رمز التحقق على بريدك الإلكتروني</p>
+                                <p id="verifyEmailDisplay" style="color: var(--primary); font-weight: 600; margin-top: 8px;"></p>
+                            </div>
+
+                            <div style="text-align: center; margin-bottom: 24px;">
+                                <button type="button" class="btn btn-primary" onclick="sendVerificationCode()" id="sendCodeBtn">
+                                    <i class="fas fa-paper-plane"></i> إرسال رمز التحقق
+                                </button>
+                            </div>
+
+                            <!-- OTP Input (shown after sending) -->
+                            <div id="otpSection" style="display: none;">
+                                <div class="form-group">
+                                    <label style="text-align: center; display: block;">أدخل رمز التحقق المكون من 6 أرقام</label>
+                                    <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 0)">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 1)">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 2)">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 3)">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 4)">
+                                        <input type="text" class="form-input otp-input" style="width: 50px; text-align: center; font-size: 24px; padding: 12px;" maxlength="1" oninput="moveToNext(this, 5)">
+                                    </div>
+                                    <p style="text-align: center; margin-top: 16px; color: var(--text-muted); font-size: 14px;">
+                                        <i class="fas fa-info-circle"></i> للاختبار السريع: اضغط على "تخطي التحقق"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="form-group">
+                            <label class="checkbox-item" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <span>أوافق على <a href="#" style="color: var(--primary);">شروط الاستخدام</a> و <a href="#" style="color: var(--primary);">سياسة الخصوصية</a></span>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="prevStep()">
+                                <i class="fas fa-arrow-right"></i> السابق
+                            </button>
+                            <div style="display: flex; gap: 12px;">
+                                <button type="button" class="btn btn-outline" onclick="skipVerification()">
+                                    <i class="fas fa-forward"></i> تخطي التحقق
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                                    <i class="fas fa-user-check"></i> إنشاء الحساب
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+        let verificationCode = '';
+        let isVerified = false;
+
+        function nextStep() {
+            // Validate current step
+            if (currentStep === 1) {
+                const firstName = document.getElementById('regFirstName').value.trim();
+                const lastName = document.getElementById('regLastName').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                const phone = document.getElementById('regPhone').value.trim();
+
+                if (!firstName || !lastName || !email || !phone) {
+                    showToast('الرجاء ملء جميع الحقول المطلوبة', 'error');
+                    return;
+                }
+
+                // Check if email already exists
+                if (getUserByEmail(email)) {
+                    showToast('البريد الإلكتروني مسجل مسبقاً!', 'error');
+                    return;
+                }
+
+                // Update verify email display
+                document.getElementById('verifyEmailDisplay').textContent = email;
+            }
+
+            if (currentStep === 2) {
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+                if (!password || password.length < 6) {
+                    showToast('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    showToast('كلمتا المرور غير متطابقتين!', 'error');
+                    return;
+                }
+            }
+
+            if (currentStep < totalSteps) {
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
+                currentStep++;
+                document.getElementById(`step-${currentStep}`).style.display = 'block';
+                updateStepsIndicator();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).style.display = 'block';
+                updateStepsIndicator();
+            }
+        }
+
+        function updateStepsIndicator() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const step = document.getElementById(`step-indicator-${i}`);
+                const line = document.getElementById(`line-${i}`);
+
+                step.classList.remove('active', 'completed');
+
+                if (i < currentStep) {
+                    step.classList.add('completed');
+                    if (line) line.classList.add('completed');
+                } else if (i === currentStep) {
+                    step.classList.add('active');
+                }
+
+                if (i >= currentStep && line) {
+                    line.classList.remove('completed');
+                }
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            const fill = document.getElementById('strengthFill');
+            const text = document.getElementById('strengthText');
+
+            let strength = 0;
+            if (password.length >= 6) strength++;
+            if (password.length >= 10) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            const width = (strength / 5) * 100;
+            fill.style.width = width + '%';
+
+            if (strength <= 1) {
+                fill.style.background = 'var(--danger)';
+                text.textContent = 'ضعيفة';
+                text.style.color = 'var(--danger)';
+            } else if (strength <= 3) {
+                fill.style.background = 'var(--warning)';
+                text.textContent = 'متوسطة';
+                text.style.color = 'var(--warning)';
+            } else {
+                fill.style.background = 'var(--success)';
+                text.textContent = 'قوية';
+                text.style.color = 'var(--success)';
+            }
+        }
+
+        function sendVerificationCode() {
+            // Generate random 6-digit code
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+            showToast('تم إرسال رمز التحقق: ' + verificationCode, 'success', 5000);
+
+            document.getElementById('otpSection').style.display = 'block';
+            document.getElementById('sendCodeBtn').textContent = 'إعادة الإرسال';
+
+            // Focus first OTP input
+            setTimeout(() => {
+                document.querySelector('.otp-input').focus();
+            }, 100);
+        }
+
+        function moveToNext(input, index) {
+            const inputs = document.querySelectorAll('.otp-input');
+
+            if (input.value.length === 1 && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+
+            // Check if all filled
+            const allFilled = Array.from(inputs).every(inp => inp.value.length === 1);
+            if (allFilled) {
+                const enteredCode = Array.from(inputs).map(inp => inp.value).join('');
+                if (enteredCode === verificationCode) {
+                    isVerified = true;
+                    document.getElementById('submitBtn').disabled = false;
+                    showToast('تم التحقق بنجاح!', 'success');
+                } else {
+                    showToast('رمز التحقق غير صحيح!', 'error');
+                    inputs.forEach(inp => inp.value = '');
+                    inputs[0].focus();
+                }
+            }
+        }
+
+        function skipVerification() {
+            isVerified = true;
+            document.getElementById('submitBtn').disabled = false;
+            showToast('تم تخطي التحقق (وضع الاختبار)', 'warning');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+
+            if (!document.getElementById('agreeTerms').checked) {
+                showToast('الرجاء الموافقة على الشروط والأحكام', 'error');
+                return;
+            }
+
+            const firstName = document.getElementById('regFirstName').value.trim();
+            const lastName = document.getElementById('regLastName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const password = document.getElementById('regPassword').value;
+
+            // Create new user
+            const newUser = {
+                id: generateUserId(),
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                password: password,
+                role: 'investor',
+                status: 'active',
+                avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(firstName + '+' + lastName)}&background=0ea5e9&color=fff`,
+                createdAt: new Date().toISOString(),
+                balance: 0,
+                investments: []
+            };
+
+            saveUser(newUser);
+            setCurrentUser(newUser);
+
+            showToast('تم إنشاء الحساب بنجاح!', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        }
+
+        // Redirect if already logged in
+        if (isLoggedIn()) {
+            const user = getCurrentUser();
+            if (user.role === 'admin') {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
+</body>
+</html>
