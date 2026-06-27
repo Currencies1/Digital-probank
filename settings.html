@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - إعدادات الحساب</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">أحمد محمد</span>
+                    <span class="user-role">مستثمر</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في الإعدادات...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Settings Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>إعدادات الحساب</h1>
+                <p>إدارة إعدادات حسابك الشخصي والأمان</p>
+            </div>
+
+            <!-- Settings Navigation -->
+            <div class="settings-nav">
+                <button class="settings-nav-item active" data-tab="profile">
+                    <i class="fas fa-user"></i>
+                    <span>الملف الشخصي</span>
+                </button>
+                <button class="settings-nav-item" data-tab="security">
+                    <i class="fas fa-lock"></i>
+                    <span>الأمان</span>
+                </button>
+                <button class="settings-nav-item" data-tab="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span>الإشعارات</span>
+                </button>
+                <button class="settings-nav-item" data-tab="payment">
+                    <i class="fas fa-credit-card"></i>
+                    <span>الدفع</span>
+                </button>
+                <button class="settings-nav-item" data-tab="privacy">
+                    <i class="fas fa-eye-slash"></i>
+                    <span>الخصوصية</span>
+                </button>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="settings-tab active" id="profile-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-user-circle"></i> المعلومات الشخصية</h3>
+                    </div>
+                    <div class="profile-photo-section">
+                        <div class="profile-photo-wrapper">
+                            <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff&size=200" alt="Profile" class="profile-photo">
+                            <button class="change-photo-btn">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-photo-actions">
+                            <button class="btn btn-primary">تغيير الصورة</button>
+                            <button class="btn btn-outline">حذف الصورة</button>
+                        </div>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الاسم الأول</label>
+                                <input type="text" value="أحمد" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>الاسم الأخير</label>
+                                <input type="text" value="محمد" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>البريد الإلكتروني</label>
+                                <input type="email" value="ahmed.mohamed@email.com" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>رقم الهاتف</label>
+                                <input type="tel" value="+966 50 123 4567" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <textarea class="form-input" rows="3">الرياض، المملكة العربية السعودية</textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>تاريخ الميلاد</label>
+                                <input type="date" value="1990-05-15" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>الجنسية</label>
+                                <select class="form-input">
+                                    <option selected>السعودية</option>
+                                    <option>الإمارات</option>
+                                    <option>الكويت</option>
+                                    <option>قطر</option>
+                                    <option>البحرين</option>
+                                    <option>عمان</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                            <button type="reset" class="btn btn-outline">إلغاء</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="settings-tab" id="security-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-lock"></i> تغيير كلمة المرور</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>كلمة المرور الحالية</label>
+                            <div class="password-input">
+                                <input type="password" class="form-input" placeholder="أدخل كلمة المرور الحالية">
+                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>كلمة المرور الجديدة</label>
+                            <div class="password-input">
+                                <input type="password" class="form-input" placeholder="أدخل كلمة المرور الجديدة">
+                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" style="width: 60%"></div>
+                                </div>
+                                <span class="strength-text">متوسطة</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>تأكيد كلمة المرور الجديدة</label>
+                            <div class="password-input">
+                                <input type="password" class="form-input" placeholder="أعد إدخال كلمة المرور الجديدة">
+                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> تحديث كلمة المرور
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-shield-alt"></i> المصادقة الثنائية (2FA)</h3>
+                    </div>
+                    <div class="two-factor-section">
+                        <div class="two-factor-status">
+                            <div class="status-indicator active">
+                                <i class="fas fa-check-circle"></i>
+                                <span>مفعلة</span>
+                            </div>
+                            <p>المصادقة الثنائية مفعلة عبر تطبيق Google Authenticator</p>
+                        </div>
+                        <div class="two-factor-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-qrcode"></i> إعادة إعداد
+                            </button>
+                            <button class="btn btn-danger">
+                                <i class="fas fa-times"></i> تعطيل
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-desktop"></i> جلسات تسجيل الدخول</h3>
+                    </div>
+                    <div class="sessions-list">
+                        <div class="session-item active">
+                            <div class="session-info">
+                                <i class="fas fa-laptop"></i>
+                                <div>
+                                    <span class="session-name">جهاز الحالي - Chrome على Windows</span>
+                                    <span class="session-location">الرياض، السعودية - الآن</span>
+                                </div>
+                            </div>
+                            <span class="session-badge active">نشط</span>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-info">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>
+                                    <span class="session-name">iPhone 14 Pro - Safari</span>
+                                    <span class="session-location">الرياض، السعودية - منذ 2 ساعة</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-outline">إنهاء</button>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-info">
+                                <i class="fas fa-tablet-alt"></i>
+                                <div>
+                                    <span class="session-name">iPad - Chrome</span>
+                                    <span class="session-location">جدة، السعودية - منذ 3 أيام</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-outline">إنهاء</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger btn-block">
+                        <i class="fas fa-sign-out-alt"></i> إنهاء جميع الجلسات
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div class="settings-tab" id="notifications-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-bell"></i> تفضيلات الإشعارات</h3>
+                    </div>
+                    <div class="notification-settings">
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات المعاملات</h4>
+                                <p>تلقي إشعارات عند إجراء أي معاملة</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات الاستثمار</h4>
+                                <p>إشعارات حول أداء الاستثمارات والأرباح</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات الأمان</h4>
+                                <p>تنبيهات تسجيل الدخول والأنشطة المشبوهة</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات البريد الإلكتروني</h4>
+                                <p>تلقي ملخصات وتحديثات عبر البريد</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات SMS</h4>
+                                <p>رسائل نصية للمعاملات المهمة</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>إشعارات التطبيق</h4>
+                                <p>إشعارات دفعية على الجوال</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Tab -->
+            <div class="settings-tab" id="payment-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-credit-card"></i> طرق الدفع</h3>
+                    </div>
+                    <div class="payment-methods">
+                        <div class="payment-card-item">
+                            <div class="payment-card-info">
+                                <div class="card-icon visa"><i class="fab fa-cc-visa"></i></div>
+                                <div>
+                                    <span class="card-number">**** **** **** 4582</span>
+                                    <span class="card-expiry">تنتهي 12/2026</span>
+                                </div>
+                            </div>
+                            <div class="payment-card-actions">
+                                <span class="card-badge default">افتراضية</span>
+                                <button class="btn btn-sm btn-outline">تعديل</button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="payment-card-item">
+                            <div class="payment-card-info">
+                                <div class="card-icon mastercard"><i class="fab fa-cc-mastercard"></i></div>
+                                <div>
+                                    <span class="card-number">**** **** **** 7891</span>
+                                    <span class="card-expiry">تنتهي 08/2025</span>
+                                </div>
+                            </div>
+                            <div class="payment-card-actions">
+                                <button class="btn btn-sm btn-outline">تعيين افتراضية</button>
+                                <button class="btn btn-sm btn-outline">تعديل</button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> إضافة بطاقة جديدة
+                    </button>
+                </div>
+
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-university"></i> الحسابات البنكية</h3>
+                    </div>
+                    <div class="bank-accounts">
+                        <div class="bank-account-item">
+                            <div class="bank-info">
+                                <i class="fas fa-building"></i>
+                                <div>
+                                    <span class="bank-name">البنك الأهلي السعودي</span>
+                                    <span class="bank-number">SA03 8000 0000 6080 1016 7519</span>
+                                </div>
+                            </div>
+                            <div class="bank-actions">
+                                <span class="bank-badge verified"><i class="fas fa-check-circle"></i> موثق</span>
+                                <button class="btn btn-sm btn-outline">تعديل</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> إضافة حساب بنكي
+                    </button>
+                </div>
+            </div>
+
+            <!-- Privacy Tab -->
+            <div class="settings-tab" id="privacy-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-eye-slash"></i> إعدادات الخصوصية</h3>
+                    </div>
+                    <div class="privacy-settings">
+                        <div class="privacy-item">
+                            <div class="privacy-info">
+                                <h4>الملف الشخصي عام</h4>
+                                <p>إتاحة معلومات ملفك الشخصي للمستخدمين الآخرين</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="privacy-item">
+                            <div class="privacy-info">
+                                <h4>إظهار محفظة الاستثمارات</h4>
+                                <p>عرض ملخص محفظتك الاستثمارية للمتابعين</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="privacy-item">
+                            <div class="privacy-info">
+                                <h4>تتبع النشاط</h4>
+                                <p>السماح بجمع بيانات الاستخدام لتحسين الخدمة</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="privacy-item">
+                            <div class="privacy-info">
+                                <h4>الإعلانات المستهدفة</h4>
+                                <p>عرض إعلانات بناءً على اهتماماتك</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card glass danger-zone">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> منطقة الخطر</h3>
+                    </div>
+                    <div class="danger-actions">
+                        <div class="danger-item">
+                            <div>
+                                <h4>تصدير البيانات</h4>
+                                <p>تحميل نسخة من جميع بياناتك</p>
+                            </div>
+                            <button class="btn btn-outline">تصدير</button>
+                        </div>
+                        <div class="danger-item">
+                            <div>
+                                <h4>حذف الحساب</h4>
+                                <p>حذف حسابك نهائياً مع جميع البيانات</p>
+                            </div>
+                            <button class="btn btn-danger">حذف الحساب</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+</body>
+</html>
