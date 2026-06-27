@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - إدارة الاستثمارات</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>المستخدمين</span>
+            </a>
+            <a href="investments-admin.html" class="nav-item active">
+                <i class="fas fa-chart-pie"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="transactions-admin.html" class="nav-item">
+                <i class="fas fa-list-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="reports-admin.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="settings-admin.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                <span>إعدادات النظام</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">مدير النظام</span>
+                    <span class="user-role">مسؤول</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في الاستثمارات...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">2</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Investments Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>إدارة الاستثمارات</h1>
+                <p>إدارة فرص الاستثمار والمحافظ الاستثمارية</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$45.2M</span>
+                        <span class="stat-label">إجمالي الاستثمارات</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+15.3%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$3.8M</span>
+                        <span class="stat-label">الأرباح الشهرية</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+22%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">156</span>
+                        <span class="stat-label">فرص استثمارية</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12.4%</span>
+                        <span class="stat-label">متوسط العائد</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+1.2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Opportunities -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-briefcase"></i> فرص الاستثمار المتاحة</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="showAddInvestmentModal()">
+                            <i class="fas fa-plus"></i> إضافة فرصة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="investments-grid">
+                    <div class="investment-card glass">
+                        <div class="investment-header">
+                            <div class="investment-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="investment-status active">نشط</div>
+                        </div>
+                        <h4>صندوق العقارات السكنية</h4>
+                        <p>استثمار في مشاريع عقارية سكنية مميزة</p>
+                        <div class="investment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">العائد السنوي</span>
+                                <span class="detail-value">14.5%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الحد الأدنى</span>
+                                <span class="detail-value">$5,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">المدة</span>
+                                <span class="detail-value">24 شهر</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">المستثمرون</span>
+                                <span class="detail-value">234</span>
+                            </div>
+                        </div>
+                        <div class="investment-progress">
+                            <div class="progress-info">
+                                <span>تم جمع $2.3M من $5M</span>
+                                <span>46%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 46%"></div>
+                            </div>
+                        </div>
+                        <div class="investment-actions">
+                            <button class="btn btn-primary btn-sm">تعديل</button>
+                            <button class="btn btn-outline btn-sm">تفاصيل</button>
+                        </div>
+                    </div>
+
+                    <div class="investment-card glass">
+                        <div class="investment-header">
+                            <div class="investment-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="investment-status active">نشط</div>
+                        </div>
+                        <h4>صندوق الطاقة المتجددة</h4>
+                        <p>استثمار في مشاريع الطاقة الشمسية وطاقة الرياح</p>
+                        <div class="investment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">العائد السنوي</span>
+                                <span class="detail-value">16.2%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الحد الأدنى</span>
+                                <span class="detail-value">$10,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">المدة</span>
+                                <span class="detail-value">36 شهر</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">المستثمرون</span>
+                                <span class="detail-value">189</span>
+                            </div>
+                        </div>
+                        <div class="investment-progress">
+                            <div class="progress-info">
+                                <span>تم جمع $8.1M من $10M</span>
+                                <span>81%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 81%"></div>
+                            </div>
+                        </div>
+                        <div class="investment-actions">
+                            <button class="btn btn-primary btn-sm">تعديل</button>
+                            <button class="btn btn-outline btn-sm">تفاصيل</button>
+                        </div>
+                    </div>
+
+                    <div class="investment-card glass">
+                        <div class="investment-header">
+                            <div class="investment-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="investment-status pending">قريباً</div>
+                        </div>
+                        <h4>صندوق التكنولوجيا الناشئة</h4>
+                        <p>استثمار في شركات التكنولوجيا الناشئة والذكاء الاصطناعي</p>
+                        <div class="investment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">العائد المتوقع</span>
+                                <span class="detail-value">20%+</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الحد الأدنى</span>
+                                <span class="detail-value">$15,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">المدة</span>
+                                <span class="detail-value">48 شهر</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">الهدف</span>
+                                <span class="detail-value">$20M</span>
+                            </div>
+                        </div>
+                        <div class="investment-progress">
+                            <div class="progress-info">
+                                <span>يبدأ بعد 15 يوم</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="investment-actions">
+                            <button class="btn btn-primary btn-sm">تعديل</button>
+                            <button class="btn btn-outline btn-sm">تفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Investments Table -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> الاستثمارات النشطة</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-filter"></i> فلترة
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-download"></i> تصدير
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>المشروع</th>
+                                <th>المستثمر</th>
+                                <th>المبلغ</th>
+                                <th>العائد</th>
+                                <th>تاريخ البدء</th>
+                                <th>تاريخ الانتهاء</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <span>صندوق العقارات السكنية</span>
+                                    </div>
+                                </td>
+                                <td>أحمد محمد</td>
+                                <td>$25,000</td>
+                                <td><span class="text-success">+14.5%</span></td>
+                                <td>2024-01-15</td>
+                                <td>2026-01-15</td>
+                                <td><span class="status-badge active">نشط</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <span>صندوق الطاقة المتجددة</span>
+                                    </div>
+                                </td>
+                                <td>سارة آل سعود</td>
+                                <td>$50,000</td>
+                                <td><span class="text-success">+16.2%</span></td>
+                                <td>2024-02-01</td>
+                                <td>2027-02-01</td>
+                                <td><span class="status-badge active">نشط</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <span>صندوق التكنولوجيا الناشئة</span>
+                                    </div>
+                                </td>
+                                <td>خالد الراشد</td>
+                                <td>$100,000</td>
+                                <td><span class="text-warning">قريباً</span></td>
+                                <td>2024-07-01</td>
+                                <td>2028-07-01</td>
+                                <td><span class="status-badge pending">قيد الانتظار</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Investment Modal -->
+    <div class="modal" id="addInvestmentModal">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> إضافة فرصة استثمارية</h3>
+                <button class="modal-close" onclick="closeAddInvestmentModal()">&times;</button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label>اسم المشروع</label>
+                    <input type="text" class="form-input" placeholder="أدخل اسم المشروع">
+                </div>
+                <div class="form-group">
+                    <label>وصف المشروع</label>
+                    <textarea class="form-input" rows="3" placeholder="أدخل وصف المشروع"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>العائد السنوي المتوقع (%)</label>
+                        <input type="number" class="form-input" placeholder="مثال: 15">
+                    </div>
+                    <div class="form-group">
+                        <label>الحد الأدنى للاستثمار</label>
+                        <input type="number" class="form-input" placeholder="مثال: 5000">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>المدة (بالأشهر)</label>
+                        <input type="number" class="form-input" placeholder="مثال: 24">
+                    </div>
+                    <div class="form-group">
+                        <label>الهدف الاستثماري</label>
+                        <input type="number" class="form-input" placeholder="مثال: 5000000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>فئة المشروع</label>
+                    <select class="form-input">
+                        <option>عقارات</option>
+                        <option>طاقة متجددة</option>
+                        <option>تكنولوجيا</option>
+                        <option>صحة</option>
+                        <option>تعليم</option>
+                        <option>أخرى</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">إضافة الفرصة</button>
+                    <button type="button" class="btn btn-outline" onclick="closeAddInvestmentModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+</body>
+</html>
