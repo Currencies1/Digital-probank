@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - المعاملات</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item active">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">أحمد محمد</span>
+                    <span class="user-role">مستثمر</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في المعاملات...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=0ea5e9&color=fff" alt="User" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Transactions Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>المعاملات</h1>
+                <p>سجل جميع العمليات المالية</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$25,000</span>
+                        <span class="stat-label">إجمالي الإيداعات</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+15%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$8,500</span>
+                        <span class="stat-label">إجمالي السحوبات</span>
+                    </div>
+                    <div class="stat-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-5%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$35,000</span>
+                        <span class="stat-label">إجمالي الاستثمارات</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+20%</span>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">$2,450</span>
+                        <span class="stat-label">إجمالي الأرباح</span>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+12%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="content-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> سجل المعاملات</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> معاملة جديدة
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i> تصدير
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-filters">
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">جميع الأنواع</option>
+                            <option value="deposit">إيداع</option>
+                            <option value="withdraw">سحب</option>
+                            <option value="investment">استثمار</option>
+                            <option value="profit">أرباح</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">جميع الحالات</option>
+                            <option value="completed">مكتمل</option>
+                            <option value="pending">قيد الانتظار</option>
+                            <option value="failed">فاشل</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <input type="date" class="form-input">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>المعاملة</th>
+                                <th>التاريخ</th>
+                                <th>المبلغ</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 600;">إيداع</span>
+                                            <span style="display: block; font-size: 12px; color: var(--text-muted);">بطاقة ائتمان</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>2024-06-27</td>
+                                <td><span class="amount positive">+$5,000.00</span></td>
+                                <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 600;">استثمار - العقارات</span>
+                                            <span style="display: block; font-size: 12px; color: var(--text-muted);">صندوق العقارات السكنية</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>2024-06-25</td>
+                                <td><span class="amount">-$10,000.00</span></td>
+                                <td><span class="status-badge active"><i class="fas fa-circle"></i> نشط</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                            <i class="fas fa-gift"></i>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 600;">أرباح - الطاقة</span>
+                                            <span style="display: block; font-size: 12px; color: var(--text-muted);">توزيع أرباح ربع سنوي</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>2024-06-20</td>
+                                <td><span class="amount positive">+$850.00</span></td>
+                                <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 600;">سحب</span>
+                                            <span style="display: block; font-size: 12px; color: var(--text-muted);">تحويل بنكي</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>2024-06-15</td>
+                                <td><span class="amount negative">-$2,000.00</span></td>
+                                <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="project-cell">
+                                        <div class="project-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 600;">تحويل داخلي</span>
+                                            <span style="display: block; font-size: 12px; color: var(--text-muted);">إلى حساب سارة</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>2024-06-10</td>
+                                <td><span class="amount negative">-$500.00</span></td>
+                                <td><span class="status-badge completed"><i class="fas fa-check-circle"></i> مكتمل</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon-sm"><i class="fas fa-receipt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn btn-sm btn-outline" disabled><i class="fas fa-chevron-right"></i></button>
+                    <button class="btn btn-sm btn-primary">1</button>
+                    <button class="btn btn-sm btn-outline">2</button>
+                    <button class="btn btn-sm btn-outline">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="btn btn-sm btn-outline">12</button>
+                    <button class="btn btn-sm btn-outline"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+</body>
+</html>
