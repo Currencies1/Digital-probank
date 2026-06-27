@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - إعدادات النظام</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>PROBANK</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="transactions.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="investments.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="academy.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأكاديمية</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <div class="nav-divider"></div>
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>لوحة الإدارة</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>المستخدمين</span>
+            </a>
+            <a href="investments-admin.html" class="nav-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>الاستثمارات</span>
+            </a>
+            <a href="transactions-admin.html" class="nav-item">
+                <i class="fas fa-list-alt"></i>
+                <span>المعاملات</span>
+            </a>
+            <a href="reports-admin.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="settings-admin.html" class="nav-item active">
+                <i class="fas fa-cogs"></i>
+                <span>إعدادات النظام</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">مدير النظام</span>
+                    <span class="user-role">مسؤول</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="البحث في الإعدادات...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="btn-icon" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">1</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=ef4444&color=fff" alt="Admin" class="user-avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Settings Content -->
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>إعدادات النظام</h1>
+                <p>إدارة إعدادات المنصة والتكوينات</p>
+            </div>
+
+            <!-- Settings Navigation -->
+            <div class="settings-nav">
+                <button class="settings-nav-item active" data-tab="general">
+                    <i class="fas fa-cog"></i>
+                    <span>عام</span>
+                </button>
+                <button class="settings-nav-item" data-tab="payment">
+                    <i class="fas fa-credit-card"></i>
+                    <span>الدفع</span>
+                </button>
+                <button class="settings-nav-item" data-tab="security">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>الأمان</span>
+                </button>
+                <button class="settings-nav-item" data-tab="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span>الإشعارات</span>
+                </button>
+                <button class="settings-nav-item" data-tab="maintenance">
+                    <i class="fas fa-tools"></i>
+                    <span>الصيانة</span>
+                </button>
+            </div>
+
+            <!-- General Tab -->
+            <div class="settings-tab active" id="general-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-info-circle"></i> معلومات المنصة</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>اسم المنصة</label>
+                            <input type="text" value="PROBANK" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>وصف المنصة</label>
+                            <textarea class="form-input" rows="3">منصة استثمارية متكاملة تتيح للمستخدمين الاستثمار في فرص متنوعة بسهولة وأمان</textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>البريد الإلكتروني للدعم</label>
+                                <input type="email" value="support@probank.com" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>رقم الهاتف</label>
+                                <input type="tel" value="+966 9200 12345" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>الشعار (Logo)</label>
+                            <div class="file-upload">
+                                <input type="file" id="logoUpload" accept="image/*">
+                                <label for="logoUpload" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>اسحب الملف هنا أو اضغط للاختيار</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-globe"></i> إعدادات اللغة والمنطقة</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>اللغة الافتراضية</label>
+                                <select class="form-input">
+                                    <option selected>العربية</option>
+                                    <option>English</option>
+                                    <option>Français</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>المنطقة الزمنية</label>
+                                <select class="form-input">
+                                    <option selected>الرياض (GMT+3)</option>
+                                    <option>دبي (GMT+4)</option>
+                                    <option>القاهرة (GMT+2)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>العملة الافتراضية</label>
+                                <select class="form-input">
+                                    <option selected>USD - الدولار الأمريكي</option>
+                                    <option>SAR - الريال السعودي</option>
+                                    <option>AED - الدرهم الإماراتي</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>تنسيق التاريخ</label>
+                                <select class="form-input">
+                                    <option selected>YYYY-MM-DD</option>
+                                    <option>DD/MM/YYYY</option>
+                                    <option>MM/DD/YYYY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Payment Tab -->
+            <div class="settings-tab" id="payment-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-credit-card"></i> إعدادات الدفع</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>الحد الأدنى للإيداع</label>
+                            <input type="number" value="100" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>الحد الأقصى للإيداع اليومي</label>
+                            <input type="number" value="50000" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>الحد الأقصى للسحب اليومي</label>
+                            <input type="number" value="25000" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>رسوم التحويل (%)</label>
+                            <input type="number" value="0.5" step="0.1" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>طرق الدفع المفعلة</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    <span>بطاقات الائتمان/الخصم</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    <span>التحويل البنكي</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    <span>Apple Pay</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox">
+                                    <span>Google Pay</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked>
+                                    <span>STC Pay</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="settings-tab" id="security-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-shield-alt"></i> إعدادات الأمان</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>المصادقة الثنائية (2FA)</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إجبار جميع المستخدمين على تفعيل 2FA</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>التحقق من الهوية (KYC)</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إجبار التحقق من الهوية قبل الاستثمار</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>مدة الجلسة (بالدقائق)</label>
+                            <input type="number" value="30" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>عدد محاولات تسجيل الدخول الفاشلة</label>
+                            <input type="number" value="5" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>مدة الحظر بعد محاولات فاشلة (بالدقائق)</label>
+                            <input type="number" value="30" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>تسجيل النشاط</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>تسجيل جميع أنشطة المستخدمين</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div class="settings-tab" id="notifications-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-bell"></i> إعدادات الإشعارات</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>إشعارات البريد الإلكتروني</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إرسال إشعارات عبر البريد الإلكتروني</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>إشعارات SMS</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إرسال إشعارات عبر الرسائل النصية</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>إشعارات Push</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إرسال إشعارات Push للتطبيق</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>إشعارات Slack</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إرسال إشعارات إلى Slack</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Webhook URL</label>
+                            <input type="url" placeholder="https://hooks.slack.com/services/..." class="form-input">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Maintenance Tab -->
+            <div class="settings-tab" id="maintenance-tab">
+                <div class="settings-card glass">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-tools"></i> وضع الصيانة</h3>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>تفعيل وضع الصيانة</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>إيقاف الموقع مؤقتاً للصيانة</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>رسالة الصيانة</label>
+                            <textarea class="form-input" rows="3">نقوم حالياً بأعمال صيانة على النظام. سنعود قريباً. شكراً لصبركم.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>السماح للمسؤولين بالوصول</label>
+                            <div class="toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span>السماح للمسؤولين بالوصول أثناء الصيانة</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> حفظ التغييرات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="settings-card glass danger-zone">
+                    <div class="settings-card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> منطقة الخطر</h3>
+                    </div>
+                    <div class="danger-actions">
+                        <div class="danger-item">
+                            <div>
+                                <h4>مسح ذاكرة التخزين المؤقت</h4>
+                                <p>مسح جميع البيانات المخزنة مؤقتاً</p>
+                            </div>
+                            <button class="btn btn-outline">مسح</button>
+                        </div>
+                        <div class="danger-item">
+                            <div>
+                                <h4>إعادة تعيين الإعدادات</h4>
+                                <p>إعادة جميع الإعدادات إلى الوضع الافتراضي</p>
+                            </div>
+                            <button class="btn btn-danger">إعادة تعيين</button>
+                        </div>
+                        <div class="danger-item">
+                            <div>
+                                <h4>نسخ احتياطي للقاعدة</h4>
+                                <p>إنشاء نسخة احتياطية من قاعدة البيانات</p>
+                            </div>
+                            <button class="btn btn-primary">نسخ احتياطي</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        if (!isLoggedIn()) { window.location.href = "login.html"; }
+    </script>
+</body>
+</html>
