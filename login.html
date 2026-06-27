@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBANK - تسجيل الدخول</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card glass">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-university"></i>
+                        <span>PROBANK</span>
+                    </div>
+                    <h2>تسجيل الدخول</h2>
+                    <p>أهلاً بك مجدداً! سجل دخولك للمتابعة</p>
+                </div>
+
+                <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <div class="password-input">
+                            <input type="email" id="loginEmail" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                            <i class="fas fa-envelope" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" class="form-input" placeholder="أدخل كلمة المرور" required>
+                            <button type="button" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <label class="checkbox-item" style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                            <input type="checkbox" id="rememberMe" style="accent-color: var(--primary);">
+                            <span>تذكرني</span>
+                        </label>
+                        <a href="#" onclick="showForgotPassword()" style="color: var(--primary); font-size: 14px;">نسيت كلمة المرور؟</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" style="padding: 14px;">
+                        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                    </button>
+                </form>
+
+                <!-- Quick Login Demo Accounts -->
+                <div style="margin: 24px 0; padding: 16px; background: var(--bg-glass); border-radius: var(--radius-sm); border: 1px dashed var(--border-color);">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; text-align: center;">
+                        <i class="fas fa-info-circle"></i> حسابات تجريبية للاختبار:
+                    </p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                        <button onclick="quickLogin('admin@probank.com', 'admin123')" class="btn btn-outline btn-sm" style="font-size: 12px;">
+                            <i class="fas fa-user-shield"></i> مسؤول
+                        </button>
+                        <button onclick="quickLogin('ahmed@probank.com', '123456')" class="btn btn-outline btn-sm" style="font-size: 12px;">
+                            <i class="fas fa-user"></i> مستثمر
+                        </button>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px; text-align: center;">
+                        اضغط على الزر لتسجيل الدخول مباشرة
+                    </p>
+                </div>
+
+                <div class="auth-footer">
+                    <p>ليس لديك حساب؟ <a href="register.html">سجل الآن</a></p>
+                </div>
+
+                <div style="margin-top: 24px; text-align: center;">
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">أو سجل دخول عبر</p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button class="btn-icon" style="width: 48px; height: 48px;" onclick="showToast('قريباً!', 'info')">
+                            <i class="fab fa-google" style="color: #ea4335;"></i>
+                        </button>
+                        <button class="btn-icon" style="width: 48px; height: 48px;" onclick="showToast('قريباً!', 'info')">
+                            <i class="fab fa-apple" style="color: var(--text-primary);"></i>
+                        </button>
+                        <button class="btn-icon" style="width: 48px; height: 48px;" onclick="showToast('قريباً!', 'info')">
+                            <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotModal">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-key"></i> استعادة كلمة المرور</h3>
+                <button class="modal-close" onclick="closeForgotModal()">&times;</button>
+            </div>
+            <form onsubmit="handleForgotPassword(event)">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="forgotEmail" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">إرسال رابط الاستعادة</button>
+                    <button type="button" class="btn btn-outline" onclick="closeForgotModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            if (!email || !password) {
+                showToast('الرجاء إدخال البريد الإلكتروني وكلمة المرور', 'error');
+                return;
+            }
+
+            const user = getUserByEmail(email);
+
+            if (!user) {
+                showToast('البريد الإلكتروني غير مسجل!', 'error');
+                return;
+            }
+
+            if (user.password !== password) {
+                showToast('كلمة المرور غير صحيحة!', 'error');
+                return;
+            }
+
+            if (user.status === 'banned') {
+                showToast('الحساب محظور! تواصل مع الدعم', 'error');
+                return;
+            }
+
+            if (user.status === 'suspended') {
+                showToast('الحساب موقوف مؤقتاً', 'warning');
+                return;
+            }
+
+            // Login successful
+            setCurrentUser(user);
+
+            if (rememberMe) {
+                localStorage.setItem('rememberEmail', email);
+            } else {
+                localStorage.removeItem('rememberEmail');
+            }
+
+            showToast('تم تسجيل الدخول بنجاح!', 'success');
+
+            setTimeout(() => {
+                if (user.role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            }, 1000);
+        }
+
+        function quickLogin(email, password) {
+            document.getElementById('loginEmail').value = email;
+            document.getElementById('loginPassword').value = password;
+            document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+        }
+
+        function showForgotPassword() {
+            document.getElementById('forgotModal').classList.add('active');
+        }
+
+        function closeForgotModal() {
+            document.getElementById('forgotModal').classList.remove('active');
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('forgotEmail').value.trim();
+            const user = getUserByEmail(email);
+
+            if (!user) {
+                showToast('البريد الإلكتروني غير مسجل!', 'error');
+                return;
+            }
+
+            showToast('تم إرسال رابط استعادة كلمة المرور (محاكاة)', 'success');
+            closeForgotModal();
+        }
+
+        // Auto-fill remembered email
+        const rememberedEmail = localStorage.getItem('rememberEmail');
+        if (rememberedEmail) {
+            document.getElementById('loginEmail').value = rememberedEmail;
+            document.getElementById('rememberMe').checked = true;
+        }
+
+        // Redirect if already logged in
+        if (isLoggedIn()) {
+            const user = getCurrentUser();
+            if (user.role === 'admin') {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'dashboard.html';
+            }
+        }
+    </script>
+</body>
+</html>
