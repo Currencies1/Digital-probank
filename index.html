@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>وردة وقلب واسم ندى المتحرك</title>
+    <title>إلى أجمل وردة - ندى</title>
     <style>
         body {
             margin: 0;
@@ -12,27 +12,45 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            font-family: 'Cairo', 'Tahoma', sans-serif;
         }
         canvas {
-            background: #000;
-            cursor: pointer;
+            display: block;
+            background: radial-gradient(circle at center, #1a0008 0%, #000000 100%);
         }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas"></canvas>
+    <canvas id="heartCanvas"></canvas>
 
     <script>
-        const canvas = document.getElementById('canvas');
+        const canvas = document.getElementById('heartCanvas');
         const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
 
-        let progress = 0;
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
 
-        function drawHeart(x, y, size, strokeColor, fillColor) {
+        // إنشاء جسيمات ونجوم مضيئة في الخلفية لإضافة لمسة ساحرية
+        const particles = [];
+        for (let i = 0; i < 80; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2.5,
+                speedY: (Math.random() * 0.5 - 0.25),
+                speedX: (Math.random() * 0.5 - 0.25),
+                alpha: Math.random()
+            });
+        }
+
+        let time = 0;
+
+        function drawHeart(x, y, size, alpha) {
             ctx.save();
             ctx.beginPath();
             ctx.translate(x, y);
@@ -45,80 +63,92 @@
             ctx.bezierCurveTo(55, 25, 55, -15, 25, -15);
             ctx.bezierCurveTo(10, -15, 0, -3, 0, 0);
             
-            if (fillColor) {
-                ctx.fillStyle = fillColor;
-                ctx.shadowBlur = 30;
-                ctx.shadowColor = '#ff0033';
-                ctx.fill();
-            }
-            if (strokeColor) {
-                ctx.strokeStyle = strokeColor;
-                ctx.lineWidth = 4;
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = '#ff0033';
-                ctx.stroke();
-            }
+            ctx.fillStyle = `rgba(255, 0, 60, ${0.15 * alpha})`;
+            ctx.shadowBlur = 40;
+            ctx.shadowColor = '#ff0033';
+            ctx.fill();
+
+            ctx.strokeStyle = `rgba(255, 50, 100, ${alpha})`;
+            ctx.lineWidth = 3;
+            ctx.stroke();
             ctx.restore();
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+            time += 0.03;
+
+            // تحديث ورسم الخلفية المضيئة
+            particles.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+
+                ctx.fillStyle = `rgba(255, 180, 200, ${Math.abs(Math.sin(time + p.alpha))})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
             const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2 - 40;
+            const centerY = canvas.height / 2 - 30;
 
-            if (progress < 1) progress += 0.015;
-            let currentScale = Math.min(progress, 1);
+            // تأثير نبضات القلب الحقيقية (Heartbeat Scale Effect)
+            const heartbeat = 1 + Math.sin(time * 3) * 0.06;
 
-            // رسم قلب الحب المضيء في الخلفية
-            drawHeart(centerX, centerY, currentScale * 1.6, '#ff1a40', 'rgba(255, 0, 51, 0.15)');
+            // رسم قلب الحب في الخلفية
+            drawHeart(centerX, centerY, 1.8 * heartbeat, 1);
 
-            // رسم الوردة المتحركة في المنتصف
+            // رسم الوردة المتفتحة برمجياً بتدرجات فخمة
             ctx.save();
             ctx.translate(centerX, centerY + 10);
-            let roseScale = currentScale * 45;
+            let roseScale = 55 * heartbeat;
             ctx.beginPath();
-            for (let phi = 0; phi < 2 * Math.PI; phi += 0.01) {
-                let k = 4; // عدد بتلات الوردة
+            for (let phi = 0; phi < 2 * Math.PI; phi += 0.005) {
+                let k = 5; // عدد بتلات الوردة
                 let r = roseScale * Math.sin(k * phi);
                 let x = r * Math.cos(phi);
                 let y = r * Math.sin(phi);
-                if (phi === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
+                if (phi === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
             }
             ctx.closePath();
-            ctx.fillStyle = '#ff1a40';
-            ctx.shadowBlur = 35;
-            ctx.shadowColor = '#ff0044';
+            
+            let gradient = ctx.createRadialGradient(0, 0, 5, 0, 0, 50);
+            gradient.addColorStop(0, '#ff758c');
+            gradient.addColorStop(0.5, '#ff1a40');
+            gradient.addColorStop(1, '#8b0000');
+            
+            ctx.fillStyle = gradient;
+            ctx.shadowBlur = 50;
+            ctx.shadowColor = '#ff0033';
             ctx.fill();
             ctx.restore();
 
-            // كتابة اسم "ندى" بخط متوهج متحرك
+            // كتابة اسم "ندى" بخط ذهبي متوهج واحترافي
             ctx.save();
-            ctx.font = 'bold 60px Arial';
+            ctx.font = 'bold 55px "Cairo", sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillStyle = '#ffd700'; // لون ذهبي براق
-            ctx.shadowBlur = 30;
+            ctx.fillStyle = '#ffd700';
+            ctx.shadowBlur = 25;
             ctx.shadowColor = '#ffaa00';
-            ctx.globalAlpha = currentScale; // ظهور تدريجي مع تفتح الوردة
-            ctx.fillText("ندى", centerX, centerY + 170);
+            ctx.fillText("ندى", centerX, centerY + 175);
+            
+            // عبارة حب إضافية تحت الاسم
+            ctx.font = '22px "Cairo", sans-serif';
+            ctx.fillStyle = '#ff8fa3';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#ff4d6d';
+            ctx.fillText("نبض القلب وروح الحياة ❤️", centerX, centerY + 225);
             ctx.restore();
 
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            }
+            requestAnimationFrame(animate);
         }
 
         animate();
-
-        // إعادة تشغيل الحركة عند النقر على الشاشة
-        canvas.addEventListener('click', () => {
-            progress = 0;
-            animate();
-        });
     </script>
 
 </body>
