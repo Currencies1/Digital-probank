@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>وردة تتفتح برمجياً</title>
+    <title>وردة وقلب واسم ندى المتحرك</title>
     <style>
         body {
             margin: 0;
@@ -21,29 +21,66 @@
 </head>
 <body>
 
-    <canvas id="flowerCanvas"></canvas>
+    <canvas id="canvas"></canvas>
 
     <script>
-        const canvas = document.getElementById('flowerCanvas');
+        const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let scale = 0;
-        const maxScale = 1;
+        let progress = 0;
 
-        function drawFlower() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function drawHeart(x, y, size, strokeColor, fillColor) {
             ctx.save();
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-
             ctx.beginPath();
-            // معادلة رياضية لرسم البتلات (Rose Curve)
-            let currentScale = scale;
-            for (let phi = 0; phi < 2 * Math.PI; phi += 0.005) {
-                let k = 4; // عدد البتلات
-                let r = 180 * Math.sin(k * phi) * currentScale;
+            ctx.translate(x, y);
+            ctx.scale(size, size);
+            ctx.moveTo(0, 0);
+            ctx.bezierCurveTo(0, -3, -5, -15, -25, -15);
+            ctx.bezierCurveTo(-55, -15, -55, 25, -55, 25);
+            ctx.bezierCurveTo(-55, 45, -35, 65, 0, 85);
+            ctx.bezierCurveTo(35, 65, 55, 45, 55, 25);
+            ctx.bezierCurveTo(55, 25, 55, -15, 25, -15);
+            ctx.bezierCurveTo(10, -15, 0, -3, 0, 0);
+            
+            if (fillColor) {
+                ctx.fillStyle = fillColor;
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = '#ff0033';
+                ctx.fill();
+            }
+            if (strokeColor) {
+                ctx.strokeStyle = strokeColor;
+                ctx.lineWidth = 4;
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = '#ff0033';
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2 - 40;
+
+            if (progress < 1) progress += 0.015;
+            let currentScale = Math.min(progress, 1);
+
+            // رسم قلب الحب المضيء في الخلفية
+            drawHeart(centerX, centerY, currentScale * 1.6, '#ff1a40', 'rgba(255, 0, 51, 0.15)');
+
+            // رسم الوردة المتحركة في المنتصف
+            ctx.save();
+            ctx.translate(centerX, centerY + 10);
+            let roseScale = currentScale * 45;
+            ctx.beginPath();
+            for (let phi = 0; phi < 2 * Math.PI; phi += 0.01) {
+                let k = 4; // عدد بتلات الوردة
+                let r = roseScale * Math.sin(k * phi);
                 let x = r * Math.cos(phi);
                 let y = r * Math.sin(phi);
                 if (phi === 0) {
@@ -53,32 +90,35 @@
                 }
             }
             ctx.closePath();
-
-            // تصميم لون الوردة الأحمر الزاهي مع تأثير الإضاءة
             ctx.fillStyle = '#ff1a40';
-            ctx.shadowBlur = 30;
-            ctx.shadowColor = '#ff0033';
+            ctx.shadowBlur = 35;
+            ctx.shadowColor = '#ff0044';
             ctx.fill();
-            
-            ctx.strokeStyle = '#ff4d6d';
-            ctx.lineWidth = 2;
-            ctx.stroke();
             ctx.restore();
 
-            // حركة التفتح التدريجي
-            if (scale < maxScale) {
-                scale += 0.01;
-                requestAnimationFrame(drawFlower);
+            // كتابة اسم "ندى" بخط متوهج متحرك
+            ctx.save();
+            ctx.font = 'bold 60px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#ffd700'; // لون ذهبي براق
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = '#ffaa00';
+            ctx.globalAlpha = currentScale; // ظهور تدريجي مع تفتح الوردة
+            ctx.fillText("ندى", centerX, centerY + 170);
+            ctx.restore();
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
             }
         }
 
+        animate();
+
         // إعادة تشغيل الحركة عند النقر على الشاشة
         canvas.addEventListener('click', () => {
-            scale = 0;
-            drawFlower();
+            progress = 0;
+            animate();
         });
-
-        drawFlower();
     </script>
 
 </body>
