@@ -2,76 +2,141 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>رسم شخصيتي باستخدام HTML و SVG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محادثة مع صديقك التقني - زياد</title>
+    <!-- استخدام Tailwind CSS لتصميم عصري وسريع -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #1a1a1a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            color: #fff;
-            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
         }
-        .container {
-            text-align: center;
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
         }
-        svg {
-            background: #2c2c2c;
-            border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-        p {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #ddd;
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #334155;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2>شخصيتك المستوحاة من الصورة</h2>
-        <!-- كود SVG يمثل الشخصية ضمن إطار دائري شبيه بالمرآة -->
-        <svg width="320" height="320" viewBox="0 0 300 300">
-            <!-- إطار المرآة الخارجي المزخرف -->
-            <circle cx="150" cy="150" r="145" fill="none" stroke="#d4af37" stroke-width="8" />
-            <circle cx="150" cy="150" r="140" fill="#111" />
+<body class="h-screen flex flex-col justify-between">
+
+    <!-- الهيدر (رأس الصفحة) -->
+    <header class="bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between shadow-md">
+        <div class="flex items-center space-x-3 space-x-reverse">
+            <div class="relative">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-xl font-bold shadow-lg">
+                    👨‍💻
+                </div>
+                <span class="absolute bottom-0 left-0 w-3.5 h-3.5 bg-green-500 border-2 border-slate-900 rounded-full"></span>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg">زياد (صديقك التقني)</h1>
+                <p class="text-xs text-slate-400">جاهز للدردشة، البرمجة، وتطوير الأفكار معك</p>
+            </div>
+        </div>
+        <div class="text-xs bg-slate-800 px-3 py-1.5 rounded-full text-slate-300 border border-slate-700">
+            متصل الآن 🟢
+        </div>
+    </header>
+
+    <!-- منطقة المحادثة -->
+    <main id="chatBox" class="chat-container flex-1 overflow-y-auto p-4 space-y-4 max-w-3xl w-full mx-auto">
+        <!-- رسالة الترحيب من الشخصية -->
+        <div class="flex items-start space-x-2 space-x-reverse">
+            <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-sm shrink-0">👨‍💻</div>
+            <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tr-none max-w-[80%] text-sm leading-relaxed shadow-sm">
+                أهلاً يا صديقي! منور الجلسة اليوم. قول لي، شو المشروع أو الفكرة اللي عم تفكر فيها حالياً؟ خليني أساعدك نضبط الأكواد ونظبط الدنيا سوا ☕🔥
+            </div>
+        </div>
+    </main>
+
+    <!-- صندوق الإدخال (أسفل الصفحة) -->
+    <footer class="bg-slate-900 border-t border-slate-800 p-3">
+        <form id="chatForm" class="max-w-3xl mx-auto flex items-center space-x-2 space-x-reverse">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="اكتب رسالتك هنا... (مثلاً: كيف نعمل صفحة ويب؟ أو ساعدني ببرمجة تطبيق)" 
+                class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 text-slate-100 placeholder-slate-500"
+                autocomplete="off"
+                required
+            >
+            <button 
+                type="submit" 
+                class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-3 rounded-xl text-sm font-medium transition shadow-lg flex items-center justify-center shrink-0">
+                إرسال 🚀
+            </button>
+        </form>
+    </footer>
+
+    <!-- سكربت التفاعل الذكي للشخصية -->
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+
+        // قاعدة معرفة وردود تفاعلية لشخصية "زياد" التقنية
+        function getZiadResponse(message) {
+            const msg = message.toLowerCase();
             
-            <!-- الخلفية داخل المرآة -->
-            <rect x="20" y="20" width="260" height="260" rx="130" fill="#222" />
-            
-            <!-- الكتفين والقميص الأسود -->
-            <path d="M 80 300 Q 150 190 220 300 Z" fill="#1c1c1c" />
-            
-            <!-- الجسم والذراع المفتولة التي تحمل الهاتف -->
-            <path d="M 90 220 C 70 200 65 170 95 165 C 115 160 135 180 145 200 Z" fill="#d29d76" />
-            <rect x="135" y="150" width="25" height="45" rx="5" fill="#333" stroke="#555" stroke-width="2" />
-            
-            <!-- العنق -->
-            <path d="M 125 160 L 125 130 L 175 130 L 175 160 Z" fill="#d29d76" />
-            
-            <!-- الرأس والوجه -->
-            <ellipse cx="150" cy="95" rx="35" ry="45" fill="#d29d76" />
-            
-            <!-- الشعر الأسود القصير -->
-            <path d="M 118 75 C 120 48 180 48 182 75 C 175 58 125 58 118 75 Z" fill="#111" />
-            
-            <!-- اللحية والشارب -->
-            <path d="M 120 100 Q 150 145 180 100 Q 175 132 150 138 Q 125 132 120 100 Z" fill="#1a1a1a" />
-            <path d="M 135 102 Q 150 115 165 102 Q 150 108 135 102 Z" fill="#1a1a1a" />
-            
-            <!-- العينان والحواجب -->
-            <line x1="130" y1="85" x2="145" y2="83" stroke="#111" stroke-width="3" stroke-linecap="round" />
-            <line x1="155" y1="83" x2="170" y2="85" stroke="#111" stroke-width="3" stroke-linecap="round" />
-            <circle cx="137" cy="90" r="3" fill="#111" />
-            <circle cx="163" cy="90" r="3" fill="#111" />
-            
-            <!-- التيشيرت الأسود والتفاصيل الأمامية -->
-            <path d="M 95 190 Q 150 165 205 190 L 220 300 L 80 300 Z" fill="#1c1c1c" />
-        </svg>
-        <p>قم بنسخ هذا الكود ولصقه في ملف نصي، ثم احفظه بامتداد <code>index.html</code> وافتحه بأي متصفح إنترنت!</p>
-    </div>
+            if (msg.includes('مرحبا') || msg.includes('اهلاً') || msg.includes('السلام')) {
+                return "هلا فيك يا غالي! كيف الأمور معك اليوم؟ جاهز للشغل ولَّا رايق؟";
+            } else if (msg.includes('برمجة') || msg.includes('كود') || msg.includes('موقع') || msg.includes('تطبيق')) {
+                return "البرمجة ملعبي! اعطيني تفاصيل المشروع اللي بدك ياه (سواء HTML، Node.js، بايثون، أو واجهات)، وبأي آلية حبّيت نبدأ فيه؟";
+            } else if (msg.includes('متة') || msg.includes('قهوة') || msg.includes('شاي')) {
+                return "يا سلام! أحلى رشفة متة مع البرمجة والكود الرايق، بتعطيك تركيز فولاذي. صب كاسة وتعال نكمل شغل! 🌿🧉";
+            } else if (msg.includes('مشروع') || msg.includes('تطوير')) {
+                return "جميل جداً! بناء المشاريع هو أمتع شي. احكي لي شو الفكرة الأساسية، وخليني أرتب لك الأفكار والخطوات التقنية لننفذها سوا.";
+            } else {
+                return "كلام جميل يا صديقي.. أنا معك عم بتابع الفكرة. خبرني أكثر أو اطرح عليّ التفاصيل التقنية اللي بدك إياها لنحلها سوا خطوة بخطوة!";
+            }
+        }
+
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // إضافة رسالة المستخدم
+            appendMessage(text, 'user');
+            userInput.value = '';
+
+            // محاكاة تفكير الشخصية لثانية واحدة لإعطاء واقعية
+            setTimeout(() => {
+                const reply = getZiadResponse(text);
+                appendMessage(reply, 'bot');
+            }, 800);
+        });
+
+        function appendMessage(text, sender) {
+            const isUser = sender === 'user';
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex items-start space-x-2 space-x-reverse ${isUser ? 'justify-end' : ''}`;
+
+            if (!isUser) {
+                wrapper.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-sm shrink-0">👨‍💻</div>
+                    <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tr-none max-w-[80%] text-sm leading-relaxed shadow-sm">
+                        ${escapeHtml(text)}
+                    </div>
+                `;
+            } else {
+                wrapper.innerHTML = `
+                    <div class="bg-indigo-600 text-white p-3.5 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed shadow-sm">
+                        ${escapeHtml(text)}
+                    </div>
+                `;
+            }
+
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+    </script>
 </body>
 </html>
