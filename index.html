@@ -3,139 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محادثة مع صديقك التقني - زياد</title>
-    <!-- استخدام Tailwind CSS لتصميم عصري وسريع -->
+    <title>المساعد الصوتي الذكي - Hologram AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: #050b14;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
-        .chat-container::-webkit-scrollbar {
-            width: 6px;
+        /* تأثير التوهج النيوني المستوحى من صورتك */
+        .hologram-glow {
+            box-shadow: 0 0 50px rgba(0, 150, 255, 0.2), inset 0 0 30px rgba(0, 200, 255, 0.2);
         }
-        .chat-container::-webkit-scrollbar-thumb {
-            background-color: #334155;
-            border-radius: 4px;
+        .core-pulse {
+            animation: pulseCore 2s infinite alternate;
+        }
+        @keyframes pulseCore {
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px #ff6600); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 25px #ff9933); }
+        }
+        .listening-wave {
+            animation: waveAnim 1.2s infinite ease-in-out;
+        }
+        @keyframes waveAnim {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 40px rgba(0, 220, 255, 0.6); }
         }
     </style>
 </head>
-<body class="h-screen flex flex-col justify-between">
+<body class="h-screen flex flex-col items-center justify-between p-6">
 
-    <!-- الهيدر (رأس الصفحة) -->
-    <header class="bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between shadow-md">
-        <div class="flex items-center space-x-3 space-x-reverse">
-            <div class="relative">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-xl font-bold shadow-lg">
-                    👨‍💻
-                </div>
-                <span class="absolute bottom-0 left-0 w-3.5 h-3.5 bg-green-500 border-2 border-slate-900 rounded-full"></span>
-            </div>
-            <div>
-                <h1 class="font-bold text-lg">زياد (صديقك التقني)</h1>
-                <p class="text-xs text-slate-400">جاهز للدردشة، البرمجة، وتطوير الأفكار معك</p>
-            </div>
-        </div>
-        <div class="text-xs bg-slate-800 px-3 py-1.5 rounded-full text-slate-300 border border-slate-700">
-            متصل الآن 🟢
-        </div>
+    <!-- الهيدر -->
+    <header class="text-center space-y-1">
+        <h1 class="text-xl font-bold tracking-wider text-cyan-400">HOLOGRAPHIC AI CORE</h1>
+        <p class="text-xs text-cyan-200/60">مساعدك الصوتي التفاعلي</p>
     </header>
 
-    <!-- منطقة المحادثة -->
-    <main id="chatBox" class="chat-container flex-1 overflow-y-auto p-4 space-y-4 max-w-3xl w-full mx-auto">
-        <!-- رسالة الترحيب من الشخصية -->
-        <div class="flex items-start space-x-2 space-x-reverse">
-            <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-sm shrink-0">👨‍💻</div>
-            <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tr-none max-w-[80%] text-sm leading-relaxed shadow-sm">
-                أهلاً يا صديقي! منور الجلسة اليوم. قول لي، شو المشروع أو الفكرة اللي عم تفكر فيها حالياً؟ خليني أساعدك نضبط الأكواد ونظبط الدنيا سوا ☕🔥
-            </div>
+    <!-- العنصر المرئي للشخصية (شبيه بالصورة) -->
+    <div class="relative flex flex-col items-center justify-center my-auto">
+        <div id="visualizerRing" class="w-64 h-64 rounded-full border-2 border-cyan-500/40 flex items-center justify-center hologram-glow transition-all duration-300">
+            <!-- هيكل الشخصية النيوني باستخدام SVG -->
+            <svg class="w-48 h-48 core-pulse" viewBox="0 0 24 24" fill="none" stroke="url(#blueGradient)" stroke-width="0.8">
+                <defs>
+                    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f2fe" />
+                        <stop offset="100%" stop-color="#4facfe" />
+                    </linearGradient>
+                </defs>
+                <!-- رسم تجريدي للرأس والكتفين الهولوغرامي -->
+                <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 8 8.5 9.2 10 9.7C8 10.8 6.5 12.8 6 15.2C5 19.5 7 22 12 22C17 22 19 19.5 18 15.2C17.5 12.8 16 10.8 14 9.7C15.5 9.2 16.5 8 16.5 6.5C16.5 4 14.5 2 12 2Z" />
+                <!-- القلب المتوهج البرتقالي في المنتصف -->
+                <circle cx="12" cy="14" r="2.5" fill="#ff7700" filter="drop-shadow(0 0 6px #ff4500)" />
+            </svg>
         </div>
-    </main>
+        <!-- حالة النظام -->
+        <div id="statusText" class="mt-6 text-sm tracking-widest text-cyan-300 bg-cyan-950/40 px-4 py-1.5 rounded-full border border-cyan-800/50 shadow-inner">
+            اضغط على الميكروفون وابدأ التحدث...
+        </div>
+    </div>
 
-    <!-- صندوق الإدخال (أسفل الصفحة) -->
-    <footer class="bg-slate-900 border-t border-slate-800 p-3">
-        <form id="chatForm" class="max-w-3xl mx-auto flex items-center space-x-2 space-x-reverse">
-            <input 
-                type="text" 
-                id="userInput" 
-                placeholder="اكتب رسالتك هنا... (مثلاً: كيف نعمل صفحة ويب؟ أو ساعدني ببرمجة تطبيق)" 
-                class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 text-slate-100 placeholder-slate-500"
-                autocomplete="off"
-                required
-            >
-            <button 
-                type="submit" 
-                class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-3 rounded-xl text-sm font-medium transition shadow-lg flex items-center justify-center shrink-0">
-                إرسال 🚀
-            </button>
-        </form>
-    </footer>
+    <!-- صندوق عرض الحوار الأخير -->
+    <div class="w-full max-w-md bg-slate-900/80 border border-cyan-900/50 rounded-xl p-3 text-center text-xs text-slate-300 mb-4 min-h-[50px] flex items-center justify-center">
+        <span id="transcript">الردود ستظهر هنا صوتياً ونزياً...</span>
+    </div>
 
-    <!-- سكربت التفاعل الذكي للشخصية -->
+    <!-- زر التفاعل الصوتي -->
+    <div class="mb-4">
+        <button id="micBtn" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold p-5 rounded-full shadow-lg shadow-cyan-500/30 transition transform active:scale-95 flex items-center justify-center">
+            <svg class="w-8 h-8 text-slate-950" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- سكربت التحكم الصوتي والذكاء -->
     <script>
-        const chatBox = document.getElementById('chatBox');
-        const chatForm = document.getElementById('chatForm');
-        const userInput = document.getElementById('userInput');
+        const micBtn = document.getElementById('micBtn');
+        const statusText = document.getElementById('statusText');
+        const transcript = document.getElementById('transcript');
+        const visualizerRing = document.getElementById('visualizerRing');
 
-        // قاعدة معرفة وردود تفاعلية لشخصية "زياد" التقنية
-        function getZiadResponse(message) {
-            const msg = message.toLowerCase();
-            
-            if (msg.includes('مرحبا') || msg.includes('اهلاً') || msg.includes('السلام')) {
-                return "هلا فيك يا غالي! كيف الأمور معك اليوم؟ جاهز للشغل ولَّا رايق؟";
-            } else if (msg.includes('برمجة') || msg.includes('كود') || msg.includes('موقع') || msg.includes('تطبيق')) {
-                return "البرمجة ملعبي! اعطيني تفاصيل المشروع اللي بدك ياه (سواء HTML، Node.js، بايثون، أو واجهات)، وبأي آلية حبّيت نبدأ فيه؟";
-            } else if (msg.includes('متة') || msg.includes('قهوة') || msg.includes('شاي')) {
-                return "يا سلام! أحلى رشفة متة مع البرمجة والكود الرايق، بتعطيك تركيز فولاذي. صب كاسة وتعال نكمل شغل! 🌿🧉";
-            } else if (msg.includes('مشروع') || msg.includes('تطوير')) {
-                return "جميل جداً! بناء المشاريع هو أمتع شي. احكي لي شو الفكرة الأساسية، وخليني أرتب لك الأفكار والخطوات التقنية لننفذها سوا.";
-            } else {
-                return "كلام جميل يا صديقي.. أنا معك عم بتابع الفكرة. خبرني أكثر أو اطرح عليّ التفاصيل التقنية اللي بدك إياها لنحلها سوا خطوة بخطوة!";
-            }
+        // التحقق من دعم المتصفح للتعرف على الصوت
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition = null;
+
+        if (SpeechRecognition) {
+            recognition = new SpeechRecognition();
+            recognition.lang = 'ar-SA'; // اللغة العربية
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function() {
+                statusText.innerText = "جاري الاستماع إليك... 🎙️";
+                visualizerRing.classList.add('listening-wave');
+            };
+
+            recognition.onresult = function(event) {
+                const userSpeech = event.results[0][0].transcript;
+                transcript.innerText = "أنت: " + userSpeech;
+                processAIResponse(userSpeech);
+            };
+
+            recognition.onerror = function(event) {
+                statusText.innerText = "حدث خطأ في التقاط الصوت، حاول مجدداً.";
+                visualizerRing.classList.remove('listening-wave');
+            };
+
+            recognition.onend = function() {
+                visualizerRing.classList.remove('listening-wave');
+            };
+        } else {
+            statusText.innerText = "متصفحك لا يدعم التعرف الصوتي المباشر.";
+            micBtn.style.display = 'none';
         }
 
-        chatForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            // إضافة رسالة المستخدم
-            appendMessage(text, 'user');
-            userInput.value = '';
-
-            // محاكاة تفكير الشخصية لثانية واحدة لإعطاء واقعية
-            setTimeout(() => {
-                const reply = getZiadResponse(text);
-                appendMessage(reply, 'bot');
-            }, 800);
+        // تشغيل الاستماع عند الضغط على زر الميكروفون
+        micBtn.addEventListener('click', () => {
+            if (recognition) {
+                try {
+                    recognition.start();
+                } catch(e) {
+                    recognition.stop();
+                }
+            }
         });
 
-        function appendMessage(text, sender) {
-            const isUser = sender === 'user';
-            const wrapper = document.createElement('div');
-            wrapper.className = `flex items-start space-x-2 space-x-reverse ${isUser ? 'justify-end' : ''}`;
+        // قاعدة الردود الذكية وتحويل النص إلى صوت (Text-to-Speech)
+        function processAIResponse(message) {
+            statusText.innerText = "جاري التفكير والرد...";
+            const msg = message.toLowerCase();
+            let reply = "أهلاً بك يا صديقي، أنا أستمع إليك بتمعن، كيف يمكنني مساعدتك في مشروعك اليوم؟";
 
-            if (!isUser) {
-                wrapper.innerHTML = `
-                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-sm shrink-0">👨‍💻</div>
-                    <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tr-none max-w-[80%] text-sm leading-relaxed shadow-sm">
-                        ${escapeHtml(text)}
-                    </div>
-                `;
-            } else {
-                wrapper.innerHTML = `
-                    <div class="bg-indigo-600 text-white p-3.5 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed shadow-sm">
-                        ${escapeHtml(text)}
-                    </div>
-                `;
+            if (msg.includes('مرحبا') || msg.includes('اهلاً') || msg.includes('سلام')) {
+                reply = "أهلاً ومرحباً بك! النظام يعمل بكامل الطاقة وجاهز لأي مشروع تقني أو برمجي.";
+            } else if (msg.includes('برمجة') || msg.includes('كود') || msg.includes('موقع')) {
+                reply = "ممتاز جداً! البرمجة هي ملعبي الأساسي، اطرح عليّ الفكرة ولنبدأ بكتابة الأكواد معاً.";
+            } else if (msg.includes('اسمك') || msg.includes('من أنت')) {
+                reply = "أنا نظامك الهولوغرامي الذكي، تم تصميمي خصيصاً لمساعدتك وإدارة أفكارك التقنية والبرمجية.";
+            } else if (msg.includes('متة') || msg.includes('قهوة')) {
+                reply = "يا سلام! رشفة متة ساخنة مع هدوء الليل وبرمجة الأكواد تصنع المستحيل.";
             }
 
-            chatBox.appendChild(wrapper);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            transcript.innerText = "النظام: " + reply;
+            speakResponse(reply);
         }
 
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        // دالة نطق الرد بصوت الآلة
+        function speakResponse(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // ايقاف أي نطق سابق
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 1.0;
+                utterance.pitch = 0.9; // صوت ذكوري عميق قليلاً يناسب الطابع التقني
+
+                utterance.onstart = () => {
+                    statusText.innerText = "يتحدث الآن... 🔊";
+                    visualizerRing.classList.add('listening-wave');
+                };
+
+                utterance.onend = () => {
+                    statusText.innerText = "اضغط على الميكروفون وابدأ التحدث...";
+                    visualizerRing.classList.remove('listening-wave');
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                statusText.innerText = reply;
+            }
         }
     </script>
 </body>
