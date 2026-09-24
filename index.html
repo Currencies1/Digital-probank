@@ -2,76 +2,76 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - WhatsApp Web</title>
-    <!-- استخدام Tailwind CSS للتنسيق -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- خطوط وأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>رسم شخصيتي باستخدام HTML و SVG</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        svg {
+            background: #2c2c2c;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ddd;
+        }
+    </style>
 </head>
-<body class="bg-[#111b21] text-[#e9edef] min-h-screen flex flex-col justify-between selection:bg-[#00a884] selection:text-white">
-
-    <!-- الشريط العلوي الأخضر الخاص بواتساب -->
-    <div class="bg-[#00a884] h-[127px] w-full absolute top-0 left-0 z-0"></div>
-
-    <!-- المحتوى الرئيسي -->
-    <main class="relative z-10 flex-1 flex items-center justify-center p-4">
-        <div class="bg-[#222e35] w-full max-w-4xl rounded-xl shadow-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-6">
+<body>
+    <div class="container">
+        <h2>شخصيتك المستوحاة من الصورة</h2>
+        <!-- كود SVG يمثل الشخصية ضمن إطار دائري شبيه بالمرآة -->
+        <svg width="320" height="320" viewBox="0 0 300 300">
+            <!-- إطار المرآة الخارجي المزخرف -->
+            <circle cx="150" cy="150" r="145" fill="none" stroke="#d4af37" stroke-width="8" />
+            <circle cx="150" cy="150" r="140" fill="#111" />
             
-            <!-- القسم الأيمن: التعليمات -->
-            <div class="flex-1 space-y-6 text-right">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-[#00a884] rounded-full flex items-center justify-center text-white">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    </div>
-                    <span class="text-xl font-medium tracking-wide">واتساب الويب</span>
-                </div>
-
-                <h1 class="text-2xl md:text-3xl font-light text-[#e9edef] leading-relaxed">
-                    استخدم واتساب على جهاز الكمبيوتر الخاص بك
-                </h1>
-
-                <ol class="space-y-4 text-sm text-[#8696a0] list-decimal list-inside pr-2">
-                    <li class="leading-6">افتح واتساب على هاتفك المحمول.</li>
-                    <li class="leading-6">اضغط على <span class="text-[#e9edef] font-semibold">القائمة</span> أو <span class="text-[#e9edef] font-semibold">الإعدادات</span> واختار <span class="text-[#e9edef] font-semibold">الأجهزة المرتبطة</span>.</li>
-                    <li class="leading-6">اضغط على <span class="text-[#e9edef] font-semibold">ربط جهاز</span>.</li>
-                    <li class="leading-6">وجه هاتفك نحو هذه الشاشة لمسح رمز الاستجابة السريعة (QR Code).</li>
-                </ol>
-            </div>
-
-            <!-- القسم الأيسر: خانة QR Code -->
-            <div class="flex flex-col items-center justify-center bg-white p-6 rounded-lg shadow-md relative group">
-                <!-- محاكاة رمز QR (يمكن استبداله بصورة QR حقيقية) -->
-                <div class="w-56 h-56 bg-gray-100 flex items-center justify-center border-4 border-white relative overflow-hidden">
-                    <!-- شكل وهمي لرمز QR لتوضيح التصميم -->
-                    <div class="grid grid-cols-5 gap-2 w-full h-full p-2">
-                        <div class="bg-black"></div><div class="bg-black"></div><div class="bg-white"></div><div class="bg-black"></div><div class="bg-black"></div>
-                        <div class="bg-white"></div><div class="bg-black"></div><div class="bg-black"></div><div class="bg-white"></div><div class="bg-white"></div>
-                        <div class="bg-black"></div><div class="bg-white"></div><div class="bg-black"></div><div class="bg-black"></div><div class="bg-black"></div>
-                        <div class="bg-black"></div><div class="bg-black"></div><div class="bg-white"></div><div class="bg-white"></div><div class="bg-black"></div>
-                        <div class="bg-white"></div><div class="bg-black"></div><div class="bg-black"></div><div class="bg-black"></div><div class="bg-white"></div>
-                    </div>
-                    
-                    <!-- تأثير عند تمرير الماوس أو انتهاء الصلاحية -->
-                    <div class="absolute inset-0 bg-white/90 backdrop-blur-xs flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-                        <i class="fa-solid fa-arrows-rotate text-3xl text-[#00a884] mb-2"></i>
-                        <span class="text-xs text-[#111b21] font-bold text-center px-2">انقر لإعادة تحميل رمز الاستجابة السريعة</span>
-                    </div>
-                </div>
-
-                <div class="mt-4 flex items-center gap-2 text-xs text-gray-500">
-                    <input type="checkbox" id="keepLoggedIn" class="accent-[#00a884] w-4 h-4 cursor-pointer">
-                    <label for="keepLoggedIn" class="cursor-pointer">إبقائي مسجل الدخول</label>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- التذييل (Footer) -->
-    <footer class="relative z-10 py-6 text-center text-xs text-[#8696a0]">
-        <p>تم تصميم الواجهة بنمط واتساب الويب الرسمي.</p>
-    </footer>
-
+            <!-- الخلفية داخل المرآة -->
+            <rect x="20" y="20" width="260" height="260" rx="130" fill="#222" />
+            
+            <!-- الكتفين والقميص الأسود -->
+            <path d="M 80 300 Q 150 190 220 300 Z" fill="#1c1c1c" />
+            
+            <!-- الجسم والذراع المفتولة التي تحمل الهاتف -->
+            <path d="M 90 220 C 70 200 65 170 95 165 C 115 160 135 180 145 200 Z" fill="#d29d76" />
+            <rect x="135" y="150" width="25" height="45" rx="5" fill="#333" stroke="#555" stroke-width="2" />
+            
+            <!-- العنق -->
+            <path d="M 125 160 L 125 130 L 175 130 L 175 160 Z" fill="#d29d76" />
+            
+            <!-- الرأس والوجه -->
+            <ellipse cx="150" cy="95" rx="35" ry="45" fill="#d29d76" />
+            
+            <!-- الشعر الأسود القصير -->
+            <path d="M 118 75 C 120 48 180 48 182 75 C 175 58 125 58 118 75 Z" fill="#111" />
+            
+            <!-- اللحية والشارب -->
+            <path d="M 120 100 Q 150 145 180 100 Q 175 132 150 138 Q 125 132 120 100 Z" fill="#1a1a1a" />
+            <path d="M 135 102 Q 150 115 165 102 Q 150 108 135 102 Z" fill="#1a1a1a" />
+            
+            <!-- العينان والحواجب -->
+            <line x1="130" y1="85" x2="145" y2="83" stroke="#111" stroke-width="3" stroke-linecap="round" />
+            <line x1="155" y1="83" x2="170" y2="85" stroke="#111" stroke-width="3" stroke-linecap="round" />
+            <circle cx="137" cy="90" r="3" fill="#111" />
+            <circle cx="163" cy="90" r="3" fill="#111" />
+            
+            <!-- التيشيرت الأسود والتفاصيل الأمامية -->
+            <path d="M 95 190 Q 150 165 205 190 L 220 300 L 80 300 Z" fill="#1c1c1c" />
+        </svg>
+        <p>قم بنسخ هذا الكود ولصقه في ملف نصي، ثم احفظه بامتداد <code>index.html</code> وافتحه بأي متصفح إنترنت!</p>
+    </div>
 </body>
 </html>
